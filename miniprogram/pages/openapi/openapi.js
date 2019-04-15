@@ -1,84 +1,66 @@
-const code = `// 云函数入口函数
-exports.main = (event, context) => {
-  console.log(event)
-  console.log(context)
-  return {
-    sum: event.a + event.b
-  }
-}`
-
+// pages/openapi/openapi.js
 Page({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
-    result: '',
-    wxacodeSrc: '',
+
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
 
   },
 
-  copyCode: function () {
-    wx.setClipboardData({
-      data: code,
-      success: function () {
-        wx.showToast({
-          title: '复制成功',
-        })
-      }
-    })
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
-  submitTemplateMessageForm(e) {
-    wx.cloud.callFunction({
-      name: 'openapi',
-      data: {
-        action: 'sendTemplateMessage',
-        formId: e.detail.formId,
-      },
-      success: res => {
-        console.warn('openapi result', res)
-        wx.showToast({
-          title: '调用成功',
-        })
-        this.setData({
-          result: JSON.stringify(res.result)
-        })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '调用失败',
-        })
-        console.error('[云函数] [openapi] templateMessage.send 调用失败：', err)
-      }
-    })
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
 
-  submitGetWXACodeForm(e) {
-    wx.cloud.callFunction({
-      name: 'openapi',
-      data: {
-        action: 'getWXACode',
-      },
-      success: res => {
-        console.warn('getWXACode result', res)
-        wx.showToast({
-          title: '调用成功',
-        })
-        this.setData({
-          wxacodeSrc: res.result
-        })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '调用失败',
-        })
-        console.error('[云函数] [openapi] wxacode.getUnlimited 调用失败：', err)
-      }
-    })
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
   },
 
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })
-
