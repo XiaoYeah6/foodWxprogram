@@ -1,20 +1,54 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi"
+    "pages/home/home",
+    "pages/show/show",
+    "pages/publish/publish",
+    "pages/science/science",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#06c1ae",
+    "navigationBarTitleText": "美食小蜗",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor": "#06c1ae",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "推荐",
+        "iconPath":"./images/home.png",
+        "selectedIconPath": "./images/home-s.png"
+      },
+      {
+        "pagePath": "pages/show/show",
+        "text": "精选",
+        "iconPath": "./images/show.png",
+        "selectedIconPath": "./images/show-s.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发表",
+        "iconPath": "./images/publish.png",
+        "selectedIconPath": "./images/publish-s.png"
+      },
+      {
+        "pagePath": "pages/science/science",
+        "text": "科普",
+        "iconPath": "./images/science.png",
+        "selectedIconPath": "./images/science-s.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "./images/profile.png",
+        "selectedIconPath": "./images/profile-s.png"
+      }
+
+
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

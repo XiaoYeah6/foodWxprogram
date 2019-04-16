@@ -1,0 +1,71 @@
+<!--pages/home/home.wxml-->
+<view id='container'>
+  <view class="header">
+    <view class="search-container">
+      <form>
+        <image class='search-icon' mode="widthFix" src="../../images/search.png"></image>
+        <input placeholder-style="color: white" placeholder='今天吃什么呢' />
+      </form>
+    </view>
+    <swiper class='swiper' indicator-dots="true"
+  autoplay="true"
+  interval="1000"
+  duration="500"
+  circular="true">
+      <block>
+        <swiper-item>
+          <image mode="widthFix" src="../../images/banner.jpg" class="slide-image" width="355" height="150" />
+        </swiper-item>
+        
+        <swiper-item>
+          <image mode="widthFix" src="../../images/banner.jpg" class="slide-image" width="355" height="150" />
+        </swiper-item>
+        
+        <swiper-item>
+          <image mode="widthFix" src="../../images/banner.jpg" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class='hot-search-list'>
+    <view class='hot-title'>热门分类</view>
+    <view class='list'>
+      <view class='item'>私房菜</view>
+      <view class='item'>快手菜</view>
+      <view class='item'>粤菜</view>
+      <view class='item'>湘菜</view>
+      <view class='item'>酸甜</view>
+      <view class='item'>香辣</view>
+      <view class='item'>麻辣</view>
+      <view class='item'>零食</view>
+      <view class='item'>麻辣</view>
+    </view>
+  </view>
+
+  <view class='recommend'>
+    <view class='recommend-title'>每日推荐</view>
+    <view>
+      <view class='recommend-list'>
+        <view class='recommend-item'>
+          <view>
+            <image class='main-bg' mode='widthFix' src="../../images/food.jpg"></image>
+          
+          </view>
+          <view class='item-infor'>
+            <view class='title'>上班族吃得饱午餐便当</view>
+            <view class='material'>油米姐姐</view>
+            <view class='remark'>
+              <view class='view'>
+                <image src='../../images/view.png' mode='widthFix'></image>5
+              </view>
+              <view class='star'>
+                <image src='../../images/star.png' mode='widthFix'></image>108
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
