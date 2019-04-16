@@ -1,2 +1,21 @@
 <!--pages/publish/publish.wxml-->
-<text>pages/publish/publish.wxml</text>
+<view id='container'>
+  <form class='upfile'>
+    <view class='add-img common'>
+      <view>
+        <image class='img' mode="widthFix" src='../../images/img.png'></image>
+      </view>
+      <text>添加图片</text>
+    </view>
+    <view class='add-video common'>
+      <view>
+        <image class='video'mode='widthFix' src="../../images/video.png"></image>
+      </view>
+      <text>添加视频</text>
+    </view>
+    <textarea class='content' placeholder='此刻，你想说些什么...'></textarea>
+
+    <button class='submit-btn' form-type='submit'>发布</button>
+
+  </form>
+</view>

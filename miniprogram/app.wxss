@@ -11,3 +11,6 @@ button:focus{
 button::after{
   border: none;
 }
+text{
+  font-size: 14px;
+}

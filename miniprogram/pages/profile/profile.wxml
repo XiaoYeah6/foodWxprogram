@@ -1,2 +1,25 @@
 <!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<view id='container'>
+  <view class='user-infor'>
+    <view class='user-img'>
+      <image src='../../images/food.jpg'></image>
+    </view>
+    <view class='text'>欢迎，Endl</view>
+  </view>
+
+  <view class='user-list'>
+    <view class='collection common'>
+      <view class='text'>我的收藏</view>
+      <image src='../../images/arrow.png'></image>
+    </view>
+    <view class='history common'>
+      <view class='text'>浏览记录</view>
+      <image src='../../images/arrow.png'></image>
+    </view>
+    <view class='share common'>
+      <view class='text'>推荐给好友</view>
+      <image src='../../images/arrow.png'></image>
+    </view>
+  </view>
+
+</view>

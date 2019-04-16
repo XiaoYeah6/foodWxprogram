@@ -72,6 +72,7 @@
 }
 .recommend-item .remark{
   display: flex;
+  margin-top: 20px;
 }
 .recommend-item .view ,.recommend-item .star {
   margin-right: 5px;

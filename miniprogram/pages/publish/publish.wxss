@@ -1,1 +1,35 @@
 /* pages/publish/publish.wxss */
+#container{
+  padding: 10px 20px;
+}
+.upfile{
+}
+.upfile .common{
+  width: 110px;
+  height: 110px;
+  background-color: rgba(0,0,0,.05);
+  float: left;
+  margin-right: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.upfile image{
+  width: 40px;
+  height: 40px;
+}
+.upfile text{
+  margin-top: -28px;
+  color: #999;
+}
+.upfile .content{
+  clear: both;
+  padding-top: 15px;
+}
+.upfile .submit-btn{
+  background: #eee;
+  border-radius: 10px;
+  color: #666;
+}
