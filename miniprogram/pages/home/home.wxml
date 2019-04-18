@@ -1,4 +1,5 @@
 <!--pages/home/home.wxml-->
+<import src='../../template/home-detail-tem.wxml'/>
 <view id='container'>
   <view class="header">
     <view class="search-container">
@@ -47,24 +48,7 @@
     <view class='recommend-title'>每日推荐</view>
     <view>
       <view class='recommend-list'>
-        <view class='recommend-item'>
-          <view>
-            <image class='main-bg' mode='widthFix' src="../../images/food.jpg"></image>
-          
-          </view>
-          <view class='item-infor'>
-            <view class='title'>上班族吃得饱午餐便当</view>
-            <view class='material'>油米姐姐</view>
-            <view class='remark'>
-              <view class='view'>
-                <image src='../../images/view.png' mode='widthFix'></image>5
-              </view>
-              <view class='star'>
-                <image src='../../images/star.png' mode='widthFix'></image>108
-              </view>
-            </view>
-          </view>
-        </view>
+        <template is="home-detail"/>
       </view>
     </view>
   </view>

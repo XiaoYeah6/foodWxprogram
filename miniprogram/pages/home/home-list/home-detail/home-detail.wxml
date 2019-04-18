@@ -1,0 +1,63 @@
+<!--pages/home/home-list/home-detail/home-detail.wxml-->
+<import src='../../../../template/star-share.wxml'/>
+<template name="item">
+  <view class='main-item'>
+    <view class='name'>苹果</view>
+    <view class='num'>1个</view>
+    <image mode='widthFix' src='../../../../images/arrow.png'></image>
+  </view>
+</template>
+
+<view id='container'>
+  <view class='main-bg'>
+    <image mode='widthFix' src='../../../../images/food2.jpeg'></image>
+  </view>
+  <view class='food-infor'>
+    <view class='title'>
+      手指饼干
+    </view>
+    <view class='author-infor'>
+      <view class='author'>独爱你</view>
+      <view class='view common'>
+        <image src="../../../../images/view.png" mode='widthFix'></image>
+        <text>12</text>
+      </view>
+      <view class='collection common'>
+        <image src='../../../../images/star.png' mode='widthFix'></image>
+        <text>23</text>
+      </view>
+    </view>
+    <view class='description'>
+      手指饼干大家肯定是想到提拉米苏，手指饼干可配是制作提速米拉的必备品，可是这样直接吃也是十分的额美味，非常的酥脆入口即化。
+    </view>
+
+    <view class='material'>
+      <view class='classfy'>主料：</view>
+      <view class='main-material'>
+        /* 可以加个block标签用于循环使用 */
+        <template is="item"/>
+      </view>
+      <view class='classfy'>辅料：</view>
+      <view class='less-material'>
+        <template is="item"/>
+      </view>
+      <view class='classfy'>做法：</view>
+      <view class='methods'>
+        <view class='step'>步骤1/7</view>
+        <image mode='widthFix' src='../../../../images/food2.jpeg'></image>
+        <view class='step-infor'>1.黑布林去皮去核切块</view>
+      </view>
+      <view class='methods'>
+        <view class='step'>步骤2/7</view>
+        <image mode='widthFix' src='../../../../images/food2.jpeg'></image>
+        <view class='step-infor'>2.黑布林去皮去核切块</view>
+      </view>
+      <view class='methods'>
+        <view class='step'>步骤3/7</view>
+        <image mode='widthFix' src='../../../../images/food2.jpeg'></image>
+        <view class='step-infor'>3.黑布林去皮去核切块</view>
+      </view>
+    </view>
+    <template is="star-share"/>
+  </view>
+</view>

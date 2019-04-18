@@ -1,0 +1,6 @@
+<!--pages/home/home/home-detail.wxml-->
+<import src='../../../template/home-detail-tem.wxml'/>
+<template is="home-detail"/>
+<template is="home-detail"/>
+<template is="home-detail"/>
+<template is="home-detail"/>

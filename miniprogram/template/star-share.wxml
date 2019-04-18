@@ -1,0 +1,12 @@
+<template name="star-share">
+  <view class='star-share'>
+    <view class='star common'>
+      <image mode='widthFix' src='../../../../images/heart.png'></image>
+      <text>收藏</text>
+    </view>
+    <view class='share common'>
+      <image mode='widthFix' src='../../../../images/share-w.png'></image>
+      <text>分享</text>
+    </view>
+  </view>
+</template>

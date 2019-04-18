@@ -1,0 +1,83 @@
+/* pages/home/home-list/home-detail/home-detail.wxss */
+@import '../../../../template/star-share.wxss';
+.main-bg image{
+  width: 100%;
+}
+.food-infor{
+  padding: 10px;
+}
+.food-infor .title{
+  font-size: 21px;
+  font-weight: 800;
+  color: #333;
+  text-align: center;
+}
+.author-infor{
+  display: flex;
+  margin-top: 14px;
+}
+.author-infor .author{
+  font-size: 13px;
+  color: #ccc;
+  margin-right: 15px;
+}
+.author-infor .common{
+  margin-right: 15px;
+  position: relative;
+}
+.author-infor .common image{
+  width: 17px;
+  height: 17px;
+  margin-right: 2px;
+}
+.author-infor .common text{
+  color: #ccc;
+  position: relative;
+  top: -2px;
+}
+.description{
+  margin-top: 10px;
+  color: #333;
+}
+.material{
+  font-size: 17px;
+  padding: 5px 0px;
+}
+.material .classfy{
+  margin: 15px 0px 5px 0px;
+}
+.main-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+.main-item .name{
+
+}
+.main-item .num{
+  /* align-self:flex-end; */
+  position: relative;
+  left: 150rpx;
+  color: #333;
+}
+.main-item image{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 3px;
+}
+.methods{
+  border-bottom: 1px solid #ccc;
+}
+.methods .step{
+  margin: 7px 0px;
+}
+.methods image{
+  width: 80%;
+}
+.methods .step-infor{
+  margin: 7px 0px;
+}
+
