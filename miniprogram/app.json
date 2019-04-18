@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/science/science",
+    "pages/show/show",
     "pages/publish/publish",
     "pages/profile/profile",
-    "pages/home/home",
-    "pages/show/show",
-    "pages/science/science"
+    "pages/home/home"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -24,7 +24,7 @@
       },
       {
         "pagePath": "pages/show/show",
-        "text": "精选",
+        "text": "食秀",
         "iconPath": "./images/show.png",
         "selectedIconPath": "./images/show-s.png"
       },

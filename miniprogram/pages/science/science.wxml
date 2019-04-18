@@ -1,2 +1,81 @@
 <!--pages/science/science.wxml-->
-<text>pages/science/science.wxml</text>
+<view id="container">
+  <view class='nav-list'>
+    <view class='item' style='background: #06c1ae;'>
+      <view class='text'>
+        <view class='title'>健康养生</view>
+        <view class='content' style='color: #137c72;'>健康养生常识</view>
+      </view>
+      <view class='icon'>
+        <image src="../../images/heathy.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class='item' style='background: #65cfdc'>
+      <view class='text'>
+        <view class='title'>饮食禁忌</view>
+        <view class='content' style='color:#1592a1'>日常饮食禁忌</view>
+      </view>
+      <view class='icon'>
+        <image src="../../images/prohibition.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class='item' style='background: #f3856a'>
+      <view class='text'>
+        <view class='title'>瘦身美容</view>
+        <view class='content' style='color:#ce4320;'>瘦身美容百科</view>
+      </view>
+      <view class='icon'>
+        <image src="../../images/beautify.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class='item' style='background: #f06868'>
+      <view class='text'>
+        <view class='title'>烹饪技巧</view>
+        <view class='content' style='color:#c42727'>烹饪技巧大全</view>
+      </view>
+      <view class='icon'>
+        <image src="../../images/cooking.png" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='content-list'>
+    <view class="content-item">
+      <view class='img'>
+        <image mode='widthFix' src='../../images/test.jpg'></image>
+      </view>
+      <view class='text'>
+        <view class='title'>纯牛奶什么时候喝最好 喝好才营养</view>
+        <view class='content'>肾病我们都不陌生，这种疾病在小便的时候，会出现泡沫的症状，还会出现发烧或者水肿等一些常见的症状，对患者的健康造成了威胁，这种疾病在饮食上要多加注意才行，很多的食物，肾病的患者</view>
+      </view>
+      <view class='content-item-foot'>
+        <view class='collection common'>
+          <image mode='widthFix' src="../../images/star.png"></image>
+        </view>
+        <view class='share common'>
+          <image mode='widthFix' src="../../images/share.png"></image>
+        </view>
+      </view>
+    </view>
+
+
+        <view class="content-item">
+      <view class='img'>
+        <image mode='widthFix' src='../../images/test.jpg'></image>
+      </view>
+      <view class='text'>
+        <view class='title'>纯牛奶什么时候喝最好 喝好才营养</view>
+        <view class='content'>肾病我们都不陌生，这种疾病在小便的时候，会出现泡沫的症状，还会出现发烧或者水肿等一些常见的症状，对患者的健康造成了威胁，这种疾病在饮食上要多加注意才行，很多的食物，肾病的患者</view>
+      </view>
+      <view class='content-item-foot'>
+        <view class='collection common'>
+          <image mode='widthFix' src="../../images/star.png"></image>
+        </view>
+        <view class='share common'>
+          <image mode='widthFix' src="../../images/share.png"></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

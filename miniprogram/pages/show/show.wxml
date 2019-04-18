@@ -1,2 +1,119 @@
 <!--pages/show/show.wxml-->
-<text>pages/show/show.wxml</text>
+<view id='container'>
+  <view class='show-list'>
+    <view class='show-item'>
+      <view class='show-head'>
+        <view class='author-img'>
+          <image mode='widthFix' src='../../images/food2.jpeg'></image>
+        </view>
+        <view class='user-infor'>
+          <view class='author'>Author</view>
+          <view class='show-infor'>
+            <view class="time">4月17日</view>
+            <view class='place'>哈尔滨市</view>
+          </view>
+        </view>
+      </view>
+      <view class='img-container'>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food2.jpeg'></image>
+        </view>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food.jpg'></image>
+        </view>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food3.jpg'></image>
+        </view>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food4.jpg'></image>
+        </view>
+      </view>
+
+      <view class='content-container'>
+        <view class='content'>设置元素的下边框的颜色。只能定义纯色，而且只有当边框的样式是一个非 none 或 hidden 的值时边框才可能出现。</view>
+      </view>
+
+      <view class='show-foot'>
+        <view class='good common'>
+          <image mode='widthFix' src='../../images/good.png'></image>
+          <!-- <view>12</view> -->
+          <text>12</text>
+        </view>
+        <view class='view common'>
+          <image mode='widthFix' src='../../images/view.png'></image>
+          <text>12</text>
+        </view>
+        <view class='collection common'>
+          <image mode='widthFix' src='../../images/star.png'></image>
+          <!-- <view>添加两张图片</view> -->
+        </view>
+        <view class='remark common'>
+          <image mode='widthFix' src='../../images/remark.png'></image>
+          <text>12</text>
+        </view>
+        <view class='share common'>
+          <image mode='widthFix' src='../../images/share.png'></image>
+          <text>12</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='show-item'>
+      <view class='show-head'>
+        <view class='author-img'>
+          <image mode='widthFix' src='../../images/food2.jpeg'></image>
+        </view>
+        <view class='user-infor'>
+          <view class='author'>Author</view>
+          <view class='show-infor'>
+            <view class="time">4月17日</view>
+            <view class='place'>哈尔滨市</view>
+          </view>
+        </view>
+      </view>
+      <view class='img-container'>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food2.jpeg'></image>
+        </view>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food.jpg'></image>
+        </view>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food3.jpg'></image>
+        </view>
+        <view class='imgs'>
+          <image mode='widthFix' src='../../images/food4.jpg'></image>
+        </view>
+      </view>
+
+      <view class='content-container'>
+        <view class='content'>设置元素的下边框的颜色。只能定义纯色，而且只有当边框的样式是一个非 none 或 hidden 的值时边框才可能出现。</view>
+      </view>
+
+      <view class='show-foot'>
+        <view class='good common'>
+          <image mode='widthFix' src='../../images/good.png'></image>
+          <!-- <view>12</view> -->
+          <text>12</text>
+        </view>
+        <view class='view common'>
+          <image mode='widthFix' src='../../images/view.png'></image>
+          <text>12</text>
+        </view>
+        <view class='collection common'>
+          <image mode='widthFix' src='../../images/star.png'></image>
+          <!-- <view>添加两张图片</view> -->
+        </view>
+        <view class='remark common'>
+          <image mode='widthFix' src='../../images/remark.png'></image>
+          <text>12</text>
+        </view>
+        <view class='share common'>
+          <image mode='widthFix' src='../../images/share.png'></image>
+          <text>12</text>
+        </view>
+      </view>
+    </view>
+
+  </view> 
+</view>
