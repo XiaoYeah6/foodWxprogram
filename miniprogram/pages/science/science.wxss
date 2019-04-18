@@ -8,7 +8,8 @@
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 3px;
+  padding-bottom: 10px;
+  margin-bottom: 3px;
 }
 
 .nav-list image {
@@ -56,7 +57,7 @@
 }
 
 .content-item {
-  padding: 5px;
+  padding: 5px 1px 2px 2px;
   display: flex;
   border-bottom: 1px solid #ccc;
 }
@@ -66,11 +67,11 @@
   height: 270rpx;
 }
 
-.content-item .text{
-  /* flex: 1; */
+.content-item .text {
   padding: 1px 0px 1px 5px;
-    width: 440rpx;
+  width: 440rpx;
 }
+
 .content-item .title {
   white-space: nowrap;
   overflow: hidden;
@@ -79,30 +80,34 @@
 }
 
 .content-item .content {
-overflow:hidden;
-text-overflow:ellipsis;
-display:-webkit-box;
--webkit-line-clamp:2;
--webkit-box-orient:vertical;
-font-size: 14px;
-color: #666;
-margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  color: #666;
+  margin-right: 10px;
 }
-.content-item .content-item-foot{
+
+.content-item .content-item-foot {
   display: flex;
   position: relative;
 }
-.content-item-foot .common image{
+
+.content-item-foot .common image {
   width: 20px;
   height: 20px;
   position: absolute;
 }
-.content-item-foot .collection image{
-  left: -440rpx;
+
+.content-item-foot .collection image {
+  left: -400rpx;
   top: 155rpx;
 }
-.content-item-foot .share image{
-  left: -100rpx;
+
+.content-item-foot .share image {
+  left: -140rpx;
   top: 165rpx;
   width: 16px;
   height: 16px;

@@ -1,14 +1,13 @@
 {
   "pages": [
-    "pages/home/home-list/home-detail/home-detail",
-    "pages/home/home",
-    "pages/home/home-list/home-list",
-    "pages/science/science",
-    "pages/science/science-list/science-list",
     "pages/science/science-list/science-detail/science-detail",
+    "pages/science/science",
+    "pages/home/home",
+    "pages/home/home-list/home-detail/home-detail",
+    "pages/home/home-list/home-list",
+    "pages/science/science-list/science-list",
     "pages/show/show",
     "pages/show/show-list/show-list",
-    "pages/show/show-list/show-detail/show-detail",
     "pages/publish/publish",
     "pages/profile/profile"
   ],
