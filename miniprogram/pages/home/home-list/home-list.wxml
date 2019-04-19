@@ -1,6 +1,5 @@
 <!--pages/home/home/home-detail.wxml-->
 <import src='../../../template/home-detail-tem.wxml'/>
-<template is="home-detail"/>
-<template is="home-detail"/>
-<template is="home-detail"/>
-<template is="home-detail"/>
+<block wx:for="{{menuHomeList}}">
+  <template is="home-detail" data="{{...item}}"/>
+</block>

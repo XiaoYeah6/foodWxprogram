@@ -32,15 +32,7 @@
   <view class='hot-search-list'>
     <view class='hot-title'>热门分类</view>
     <view class='list'>
-      <view class='item'>私房菜</view>
-      <view class='item'>快手菜</view>
-      <view class='item'>粤菜</view>
-      <view class='item'>湘菜</view>
-      <view class='item'>酸甜</view>
-      <view class='item'>香辣</view>
-      <view class='item'>麻辣</view>
-      <view class='item'>零食</view>
-      <view class='item'>麻辣</view>
+      <navigator class='item' wx:for="{{menuList}}" url="./home-list/home-list?classid={{item.classid}}">{{item.name}}</navigator>
     </view>
   </view>
 
@@ -48,7 +40,9 @@
     <view class='recommend-title'>每日推荐</view>
     <view>
       <view class='recommend-list'>
-        <template is="home-detail"/>
+        <view wx:for="{{recommendList}}" bindtap="showDetail" data-id="{{item.id}}">
+          <template is="home-detail" data="{{...item}}"/>
+        </view>
       </view>
     </view>
   </view>

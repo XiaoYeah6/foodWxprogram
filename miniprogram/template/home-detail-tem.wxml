@@ -1,20 +1,20 @@
 <template name="home-detail">
   <view class='recommend-item'>
     <view>
-      <image class='main-bg' mode='widthFix' src="../../../images/food.jpg"></image>
+      <image class='main-bg' mode='widthFix' src="{{pic}}"></image>
     </view>
     <view class='item-infor'>
-      <view class='title'>葱油饼怎么做才能外酥里嫩</view>
-      <view class='material'>油米姐姐油米姐姐油米姐姐油米姐姐油米姐姐油米姐姐油米姐姐</view>
+      <view class='title'>{{name}}</view>
+      <view class='material'>{{content}}</view>
       <view class='remark'>
         <view class='view common'>
-          <image src='../../../images/view.png' mode='widthFix'></image>5
+          <image src='/images/view.png' mode='widthFix'></image>5
         </view>
         <view class='star common'>
-          <image src='../../../images/star.png' mode='widthFix'></image>108
+          <image src='/images/star.png' mode='widthFix'></image>108
         </view>
         <view class='share common'>
-          <image src='../../../images/share.png' mode='widthFix'></image>108
+          <image src='/images/share.png' mode='widthFix'></image>108
         </view>
       </view>
     </view>

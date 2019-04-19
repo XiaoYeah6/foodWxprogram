@@ -1,6 +1,1 @@
 <!--pages/science/science-list/science-detail/science-detail.wxml-->
-<view id='container'>
-  <view class='main-bg'>
-    <image mode='widthFix' src='../../../../images/food2.jpeg'></image>
-  </view>
-</view>

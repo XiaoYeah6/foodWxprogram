@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/science/science-list/science-detail/science-detail",
     "pages/science/science",
-    "pages/home/home",
     "pages/home/home-list/home-detail/home-detail",
     "pages/home/home-list/home-list",
     "pages/science/science-list/science-list",
