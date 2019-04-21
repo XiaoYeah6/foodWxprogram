@@ -1,66 +1,126 @@
 // pages/science-detail/science-detail.js
+let constUrl = require("../../../utils/const.js");
+let utils = require("../../../utils/util.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    scienceList: [],
+    title: "健康养生"
+  },
 
+  showScienceDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './science-detail/science-detail?id='+id,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+
+    let that=this;
+    let id=options.id;
+    this.setData({
+      title: options.title
+    });
+
+    // 养身百科首页推荐列表数据
+    wx.getStorage({
+      key: 'scienceList'+id,
+      success: (res) => {
+        this.setData({
+          scienceList: res.data
+        })
+      },
+      fail() {
+        // 科普分类的url
+        // let menuUrl = "http://route.showapi.com/90-86?showapi_appid=92670&showapi_sign&4e87aa3a7c724690be471832a5b48ae0";
+        // 请求数据
+        wx.request({
+          url: 'http://route.showapi.com/90-87',
+          data: {
+            showapi_timestamp: utils.default.formatterDateTime(),
+            showapi_appid: '92922',
+            showapi_sign: 'dffb8bfdbad944f8b421891019cf6c19',
+            "tid": id,
+            "key": "",
+            "page": ""
+          },
+          success(res) {
+            let contentlist = res.data.showapi_res_body.pagebean.contentlist;
+
+            let arr = contentlist.map((obj) => {
+              return {
+                id: obj.id,
+                title: obj.title,
+                tid: obj.tid,
+                site: obj.url
+              }
+            });
+            // 设置缓存数据
+            utils.default.setStorage('scienceList'+id, arr);
+            that.setData({
+              scienceList: arr
+            });
+          }
+        })
+      }
+    })
+
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

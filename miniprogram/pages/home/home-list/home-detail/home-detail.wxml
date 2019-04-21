@@ -1,5 +1,7 @@
 <!--pages/home/home-list/home-detail/home-detail.wxml-->
 <import src='../../../../template/star-share.wxml'/>
+<wxs src="../../../../utils/deleWrap.wxs" module="deleteWrap" />
+
 <template name="item">
   <view class='main-item'>
     <view class='name'>{{mname}}</view>
@@ -28,7 +30,7 @@
       </view>
     </view>
     <view class='description'>
-      {{detailInfor.content}}
+      {{deleteWrap.deleWrap(detailInfor.content)}}
     </view>
 
     <view class='material'>
@@ -36,15 +38,11 @@
       <view class='main-material'>
         <template is="item" wx:for="{{detailInfor.material}}" data="{{...item}}"/>
       </view>
-      <!-- <view class='classfy'>辅料：</view>
-      <view class='less-material'>
-        <template is="item"/>
-      </view> -->
       <view class='classfy'>做法：</view>
       <view class='methods' wx:for="{{detailInfor.process}}">
         <view class='step'>步骤{{index+1}}</view>
         <image mode='widthFix' src='{{item.pic}}'></image>
-        <view class='step-infor'>{{index+1}}.{{item.pcontent}}</view>
+        <view class='step-infor'>{{index+1}}.{{deleteWrap.deleWrap(item.pcontent)}}</view>
       </view>
     </view>
     <template is="star-share"/>

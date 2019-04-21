@@ -1,114 +1,41 @@
-/* pages/science/science.wxss */
 
-#container {
-  padding: 10px;
+#container{
+  width: 100vw;
+  /* height: 100vh; */
+  background: #f0f3fa;
+  min-height:100%;
 }
 
-.nav-list {
+.science-list{
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 3px;
+  padding: 20px 0px 10px 13px;
 }
-
-.nav-list image {
+.science-item{
+  margin-right: 5px;
+  margin-bottom: 20px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.science-item .img{
   width: 30px;
   height: 30px;
+  margin: 20px;
 }
-
-.nav-list .item {
-  display: flex;
-  border-radius: 5px;
-  width: 48%;
-  padding: 3px 1px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-}
-
-.item .icon {
-  width: 40px;
-  height: 40px;
-  background: #fff;
-  border-radius: 50%;
-  margin-left: 14px;
-  position: relative;
-  margin-top: 3px;
-}
-
-.item .icon image {
-  position: relative;
-  left: 5px;
-  top: 3px;
-}
-
-.item .text {
-  margin-left: 4px;
-}
-
-.item .title {
-  color: #fff;
-  font-size: 19px;
-  font-weight: 600;
-}
-
-.item .content {
-  font-size: 14px;
-}
-
-.content-item {
-  padding: 5px 1px 2px 2px;
-  display: flex;
-  border-bottom: 1px solid #ccc;
-}
-
-.content-item .img image {
-  width: 270rpx;
-  height: 270rpx;
-}
-
-.content-item .text {
-  padding: 1px 0px 1px 5px;
-  width: 440rpx;
-}
-
-.content-item .title {
-  white-space: nowrap;
-  overflow: hidden;
+.science-item .title{
+  color: #333;
   font-size: 18px;
-  margin-right: 10px;
+  padding: 5px
 }
-
-.content-item .content {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  font-size: 14px;
-  color: #666;
-  margin-right: 10px;
+.science-item .descrip{
+  color: #999;
+  font-size: 15px;
+  padding: 15px 10px;
 }
-
-.content-item .content-item-foot {
-  display: flex;
-  position: relative;
-}
-
-.content-item-foot .common image {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-}
-
-.content-item-foot .collection image {
-  left: -400rpx;
-  top: 155rpx;
-}
-
-.content-item-foot .share image {
-  left: -140rpx;
-  top: 165rpx;
-  width: 16px;
-  height: 16px;
+.science-item .more{
+  background: #35d0c0;
+  padding: 5px;
 }

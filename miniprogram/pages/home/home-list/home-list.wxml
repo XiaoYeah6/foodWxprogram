@@ -1,5 +1,5 @@
 <!--pages/home/home/home-detail.wxml-->
 <import src='../../../template/home-detail-tem.wxml'/>
-<block wx:for="{{menuHomeList}}">
+<view wx:for="{{menuHomeList}}" bindtap="showDetail" data-id="{{item.id}}">
   <template is="home-detail" data="{{...item}}"/>
-</block>
+</view>
