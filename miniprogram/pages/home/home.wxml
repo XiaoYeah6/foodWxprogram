@@ -8,6 +8,7 @@
         <input placeholder-style="color: white" placeholder='今天吃什么呢' />
       </form>
     </view>
+    
     <swiper class='swiper' indicator-dots="true"
   autoplay="true"
   interval="1000"
@@ -46,4 +47,5 @@
       </view>
     </view>
   </view>
+
 </view>

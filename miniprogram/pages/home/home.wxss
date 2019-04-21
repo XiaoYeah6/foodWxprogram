@@ -1,5 +1,8 @@
 /* pages/home/home.wxss */
 @import '../../template/home-detail-tem.wxss';
+#container{
+  margin: 0px;
+}
 .search-container {
   position: relative;
   background-color: #06c1ae;
@@ -24,7 +27,6 @@
 }
 
 .swiper {
-  /* border-bottom: 1px solid #ccc; */
   background: #fff;
 }
 
@@ -35,7 +37,6 @@
 }
 
 .hot-search-list {
-  /* margin-bottom: 1px; */
   background: #fff;
 }
 
@@ -60,7 +61,6 @@
 
 .recommend .recommend-title {
   text-align: center;
-  /* margin-bottom: 1px; */
-  padding: 3px 0px;
+  padding: 10px 0px 5px 0px;
   background: #fff;
 }
