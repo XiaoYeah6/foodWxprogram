@@ -12,7 +12,7 @@ Page({
         name: "养生保健",
         id: 100,
         content: "健康速递 养生保健",
-        pic: "../../images/express.png"
+        pic: "../../images/nutrition.png"
       },
       {
         name: "营养科普",
@@ -24,25 +24,25 @@ Page({
         name: "养老观察",
         id: 102,
         content: "人群养生 养老观察",
-        pic: "../../images/people.png"
+        pic: "../../images/nutrition.png"
       },
       {
         name: "运动常识",
         id: 109,
         content: "运动常识 有氧瑜伽",
-        pic: "../../images/sport.png"
+        pic: "../../images/nutrition.png"
       },
       {
         name: "心灵氧吧",
         id: 108,
         content: "心里百科 心灵氧吧",
-        pic: "../../images/star-icon.png"
+        pic: "../../images/nutrition.png"
       },
       {
         name: "疾病科普",
         id: 101,
         content: "体质养生 中医两性",
-        pic: "../../images/medicine.png"
+        pic: "../../images/nutrition.png"
       }
 
     ]

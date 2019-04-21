@@ -40,7 +40,7 @@
     <view class='recommend-title'>每日推荐</view>
     <view>
       <view class='recommend-list'>
-        <view wx:for="{{recommendList}}" bindtap="showDetail" data-id="{{item.id}}">
+        <view wx:for="{{recommendList}}" bindtap="showDetail" data-id="{{item.id}}" class='recommend-item'>
           <template is="home-detail" data="{{...item}}"/>
         </view>
       </view>

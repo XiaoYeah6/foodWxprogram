@@ -1,6 +1,8 @@
 .recommend-item {
   display: flex;
-  border-bottom: 1px solid #ccc;
+  margin-top: 1px;
+  padding-top: 3px;
+  background: #fff;
 }
 
 .recommend-item .main-bg {
@@ -34,7 +36,7 @@
 
 .recommend-item .remark {
   display: flex;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .recommend-item .common{

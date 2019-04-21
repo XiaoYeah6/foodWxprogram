@@ -1,5 +1,7 @@
 .star-share {
   display: flex;
+  padding-top: 10px;
+  background: #fff;
 }
 .star-share .common{
   width: 50%;

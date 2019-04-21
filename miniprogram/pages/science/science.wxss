@@ -1,24 +1,20 @@
 
-#container{
-  width: 100vw;
-  /* height: 100vh; */
-  background: #f0f3fa;
-  min-height:100%;
-}
 
 .science-list{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px 0px 10px 13px;
+
+  padding: 5px;
+  width: 100%;
 }
 .science-item{
-  margin-right: 5px;
-  margin-bottom: 20px;
+  float: left;
+  width: 46%;
   background: #fff;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 5px;
+  margin-top: 10px;
 }
 .science-item .img{
   width: 30px;

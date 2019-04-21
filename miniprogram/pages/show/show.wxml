@@ -44,7 +44,7 @@
           <text>12</text>
         </view>
         <view class='collection common'>
-          <image mode='widthFix' src='../../images/star.png'></image>
+          <image mode='widthFix' src='../../images/star.png'></image>20
           <!-- <view>添加两张图片</view> -->
         </view>
         <view class='remark common'>
