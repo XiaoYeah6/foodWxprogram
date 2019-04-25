@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 页面写的是静态的死数据，后期可能需要进行更新
     scienceMenu: [
       {
         name: "养生保健",
@@ -49,11 +50,8 @@ Page({
   },
 
   showScienceList(e){
-    // console.log(e.currentTarget.dataset.id);
-    let id = e.currentTarget.dataset.id;
-    let title = e.currentTarget.dataset.title;
     wx.navigateTo({
-      url: './science-list/science-list?id='+id+"&title="+title,
+      url: './science-list/science-list?' + utils.default.dealQuery(e.currentTarget.dataset),
     })
   },
 

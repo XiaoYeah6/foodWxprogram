@@ -12,6 +12,12 @@ Page({
     scienceDetail: {}
   },
 
+  share() {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,6 +27,7 @@ Page({
 
     wx.getStorage({
       key: 'scienceDetail' + id,
+      // 使用缓存会出错， 在此不使用缓存，后期再想办法解决问题
       // success: (res) => {
       //   WxParse.wxParse('article', 'html', res.data, that, 20);
       //   wx.hideLoading();
@@ -35,15 +42,15 @@ Page({
           url: 'http://route.showapi.com/90-88',
           data: {
             showapi_timestamp: utils.default.formatterDateTime(),
-            showapi_appid: '92922',
-            showapi_sign: 'dffb8bfdbad944f8b421891019cf6c19',
+            showapi_appid: constUrl.default.showapi_appid,
+            showapi_sign: constUrl.default.showapi_sign,
             id: id
           },
           success(res) {
             let data = res.data.showapi_res_body.item;
 
             // html字符串解析为html文档
-            WxParse.wxParse('article', 'html', data.content, that, 20);
+            WxParse.wxParse('article', 'html', data.content, that, 10);
             wx.hideLoading();
 
             // 设置缓存数据
@@ -52,7 +59,6 @@ Page({
             that.setData({
               scienceDetail: data
             });
-            console.log(that.data.scienceDetail);
           }
         })
       }

@@ -46,6 +46,7 @@ function formatterDateTime() {
       .getSeconds());
   return datetime;
 }
+
 export default{
   requestData,
   setStorage,

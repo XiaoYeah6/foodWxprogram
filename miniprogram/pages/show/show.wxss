@@ -60,10 +60,10 @@
 }
 .show-foot{
   display: flex;
-  /* border-bottom: 1px solid #f3f3f3; */
   padding-bottom: 8px;
   margin-bottom: 1px;
   background: #fff;
+  justify-content: space-around;
 }
 .show-foot .common{
   width: 25%;

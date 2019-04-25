@@ -7,27 +7,49 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 热门分类数据列表
     menuList: [],
+
+    // 每日推荐数据列表
     recommendList: [],
+
+    // 写死的热门分类数据接口信息
+
+    // 写死的每日推荐数据接口信息
+    recommendListInfor: {
+      classid: 6,
+      start: 0,
+      num: 10
+    },
+    searchUrlInfor: {
+      // keyword: "",
+      num: 10
+    }
   },
 
-  // 点击每日推荐显示详情页面
-  showDetail(e){
-    let id = e.currentTarget.dataset.id;
+  search(e){
     wx.navigateTo({
-      url: './home-list/home-detail/home-detail?id='+id,
+      url: './home-list/home-list?' + utils.default.dealQuery(Object.assign(this.data.searchUrlInfor, { keyword: e.detail.value.searchName}))
     })
   },
 
-
+  // 点击每日推荐显示详情页面
+  showDetail(e) {
+    let id = e.currentTarget.dataset.classid;
+    wx.navigateTo({
+      url: './home-list/home-detail/home-detail?id=' + id,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+    let appkey = constUrl.default.menuAppkey;
     // 使用变量that保存this指向
     let that = this;
-    
+
     // 热门分类
     // 获取缓存数据
     wx.getStorage({
@@ -39,7 +61,8 @@ Page({
       },
       fail() {
         // 热门分类请求的url
-        let menuUrl = constUrl.default.menuUrl;
+        // 处理url接口
+        let menuUrl = constUrl.default.menuUrl + utils.default.dealQuery({ appkey: constUrl.default.menuAppkey });
         // 请求数据
         utils.default.requestData(menuUrl).then((res) => {
           // 设置缓存数据
@@ -62,9 +85,10 @@ Page({
         });
       },
       fail() {
-        let classfyUrl = constUrl.default.classfyUrl;
+        // let recommendListUrl = constUrl.default.recommendListUrl;
+        let recommendListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.recommendListInfor, { appkey: constUrl.default.menuAppkey}));
         // 请求数据
-        utils.default.requestData(classfyUrl).then((res) => {
+        utils.default.requestData(recommendListUrl).then((res) => {
 
           // 打包请求的数据
           let recommendList = [];
@@ -78,7 +102,7 @@ Page({
           });
 
           // 把数据存储在缓存中
-          utils.default.setStorage("recommendList",recommendList);
+          utils.default.setStorage("recommendList", recommendList);
           // 更新数据
           that.setData({
             recommendList

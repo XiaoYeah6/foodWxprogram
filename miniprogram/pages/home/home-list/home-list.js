@@ -7,7 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    menuHomeList: []
+    menuHomeList: [],
+    homeListInfor: {
+      start: 0,
+      num: 10
+    }
   },
 
   // 点击每日推荐显示详情页面
@@ -23,43 +27,100 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let query = utils.default.dealQuery(options);
+    console.log(options);
+    // 处理一下请求数据的接口
+    Object.assign(this.data.homeListInfor, {
+      start: options.start,
+      num: options.num,
+      classid: options.classid
+    });
+    this.setData({
+      homeListInfor: this.data.homeListInfor
+    });
+
     let that = this;
-
-    // 请求详情列表数据
-    wx.getStorage({
-      key: 'menuHomeList',
-      success: function(res) {
-        that.setData({
-          menuHomeList: res.data
-        });
-      },
-      fail() {
-        let classfyUrl = "https://way.jd.com/jisuapi/byclass?" + query + "&start=0&num=10&appkey=d84a730b819430e5a41c09989fbcda66";
-        // 请求数据
-        utils.default.requestData(classfyUrl).then((res) => {
-
-          // 打包请求的数据
-          let menuHomeList = [];
-          res.data.result.result.list.forEach((item) => {
-            let aRem = {};
-            aRem.content = utils.default.deleWrap(item.content);
-            aRem.id = item.id;
-            aRem.name = item.name;
-            aRem.pic = item.pic;
-            menuHomeList.push(aRem);
-          });
-
-          // 把数据存储在缓存中
-          utils.default.setStorage("menuHomeList", menuHomeList);
-          // 更新数据
+    if (!options.classid || options.keyword) {
+      console.log("关键字请求数据");
+      // 请求详情列表数据
+      wx.getStorage({
+        key: 'menuHomeList' + options.keyword,
+        success: function(res) {
           that.setData({
-            menuHomeList
+            menuHomeList: res.data
           });
-        });
+        },
+        fail() {
 
-      }
-    })
+          let homeListUrl = constUrl.default.searchUrl + utils.default.dealQuery(Object.assign({
+            num: options.num,
+            keyword: options.keyword
+          }, {
+            appkey: constUrl.default.menuAppkey
+          }));
+          // 请求数据
+          utils.default.requestData(homeListUrl).then((res) => {
+
+            // 打包请求的数据
+            let menuHomeList = [];
+            res.data.result.result.list.forEach((item) => {
+              let aRem = {};
+              aRem.content = utils.default.deleWrap(item.content);
+              aRem.id = item.id;
+              aRem.name = item.name;
+              aRem.pic = item.pic;
+              menuHomeList.push(aRem);
+            });
+
+            // 把数据存储在缓存中
+            utils.default.setStorage("menuHomeList", menuHomeList);
+            // 更新数据
+            that.setData({
+              menuHomeList
+            });
+          });
+
+        }
+      })
+    } else {
+      console.log("非关键字请求数据");
+      // 请求详情列表数据
+      wx.getStorage({
+        key: 'menuHomeList',
+        success: function(res) {
+          that.setData({
+            menuHomeList: res.data
+          });
+        },
+        fail() {
+
+          let homeListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.homeListInfor, {
+            appkey: constUrl.default.menuAppkey
+          }));
+          // 请求数据
+          utils.default.requestData(homeListUrl).then((res) => {
+
+            // 打包请求的数据
+            let menuHomeList = [];
+            res.data.result.result.list.forEach((item) => {
+              let aRem = {};
+              aRem.content = utils.default.deleWrap(item.content);
+              aRem.id = item.id;
+              aRem.name = item.name;
+              aRem.pic = item.pic;
+              menuHomeList.push(aRem);
+            });
+
+            // 把数据存储在缓存中
+            utils.default.setStorage("menuHomeList", menuHomeList);
+            // 更新数据
+            that.setData({
+              menuHomeList
+            });
+          });
+
+        }
+      })
+    }
 
   },
 

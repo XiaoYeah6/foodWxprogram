@@ -16,9 +16,14 @@
       <view class='text'>浏览记录</view>
       <image src='../../images/arrow.png'></image>
     </view>
-    <view class='share common'>
+    <view class='share common' bindtap='share'>
       <view class='text'>推荐给好友</view>
       <image src='../../images/arrow.png'></image>
+      <button open-type='share'></button>
+    </view>
+    <view class='clear common' bindtap='clearStor'>
+      <view class='text'>清除缓存</view>
+      <image src='../../images/arrow.png' ></image>
     </view>
   </view>
 

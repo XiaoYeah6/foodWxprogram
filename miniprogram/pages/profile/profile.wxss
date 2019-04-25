@@ -1,6 +1,7 @@
 /* pages/profile/profile.wxss */
-.container{
-  position: relative;
+#container{
+  /* position: relative; */
+  height: 100vh;
 }
 .user-infor {
   margin-top: 10px;
@@ -38,4 +39,10 @@
   position: absolute;
   right: 10px;
   top: 7px;
+}
+.user-list .share button{
+  /* background: #ccc; */
+  height: 39px;
+  position: relative;
+  top: -39px;
 }

@@ -1,4 +1,4 @@
-// pages/profile/profile.js
+// pages/profile/collection-science/collection-science.js
 Page({
 
   /**
@@ -6,29 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  share(){
-    wx.showShareMenu({
-      withShareTicket: true 
-    })
-    // console.log(asdfgfh);
-  },
-
-  clearStor(){
-    wx.showModal({
-      title: "提示",
-      content: '清除缓存可能造成卡顿，是否确认清除缓存',
-      confirmText: "确认",
-      success(res){
-        if(res.confirm){
-          wx.clearStorage();
-          wx.showToast({
-            title: '',
-          })
-        }
-      }
-    })
   },
 
   /**

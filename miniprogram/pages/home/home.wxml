@@ -3,9 +3,10 @@
 <view id='container'>
   <view class="header">
     <view class="search-container">
-      <form>
+      <form bindsubmit="search">
         <image class='search-icon' mode="widthFix" src="../../images/search.png"></image>
-        <input placeholder-style="color: white" placeholder='今天吃什么呢' />
+        <input placeholder-style="color: white" placeholder='今天吃什么呢' name="searchName" />
+        <button form-type='submit'></button>
       </form>
     </view>
     
@@ -41,7 +42,7 @@
     <view class='recommend-title'>每日推荐</view>
     <view>
       <view class='recommend-list'>
-        <view wx:for="{{recommendList}}" bindtap="showDetail" data-id="{{item.id}}" class='recommend-item'>
+        <view wx:for="{{recommendList}}" bindtap="showDetail" data-classid="{{item.id}}" class='recommend-item'>
           <template is="home-detail" data="{{...item}}"/>
         </view>
       </view>

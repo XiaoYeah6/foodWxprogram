@@ -14,7 +14,7 @@ Page({
   showScienceDetail(e){
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: './science-detail/science-detail?id='+id,
+      url: './science-detail/science-detail?'+utils.default.dealQuery({id}),
     })
   },
 
@@ -39,14 +39,13 @@ Page({
       },
       fail() {
         // 科普分类的url
-        // let menuUrl = "http://route.showapi.com/90-86?showapi_appid=92670&showapi_sign&4e87aa3a7c724690be471832a5b48ae0";
         // 请求数据
         wx.request({
-          url: 'http://route.showapi.com/90-87',
+          url: constUrl.default.scienceListUrl,
           data: {
             showapi_timestamp: utils.default.formatterDateTime(),
-            showapi_appid: '92922',
-            showapi_sign: 'dffb8bfdbad944f8b421891019cf6c19',
+            showapi_appid: constUrl.default.showapi_appid,
+            showapi_sign: constUrl.default.showapi_sign,
             "tid": id,
             "key": "",
             "page": ""

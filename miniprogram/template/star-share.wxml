@@ -4,9 +4,10 @@
       <image mode='widthFix' src='../../../../images/heart.png'></image>
       <text>收藏</text>
     </view>
-    <view class='share common'>
+    <view class='share common' bindtap='share'>
       <image mode='widthFix' src='../../../../images/share-w.png'></image>
       <text>分享</text>
+      <button open-type='share' class='share-btn'></button>
     </view>
   </view>
 </template>

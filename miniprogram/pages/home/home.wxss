@@ -8,7 +8,15 @@
   background-color: #06c1ae;
   padding: 10px 0px;
 }
-
+.search-container button{
+  width: 28px;
+  height: 28px;
+  background: #ccc;
+  position: absolute;
+  right: 23px;
+  top: 12px;
+  background: rgba(0,0,0,0);
+}
 .search-container .search-icon {
   width: 24px;
   height: 24px;
@@ -24,6 +32,7 @@
   border-radius: 5px;
   background-color: #68dbce;
   background: rgba(68, db, ce, 0.8);
+  color: #fff;
 }
 
 .swiper {

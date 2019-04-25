@@ -36,23 +36,15 @@
       <view class='show-foot'>
         <view class='good common'>
           <image mode='widthFix' src='../../images/good.png'></image>
-          <!-- <view>12</view> -->
-          <text>12</text>
-        </view>
-        <view class='view common'>
-          <image mode='widthFix' src='../../images/view.png'></image>
           <text>12</text>
         </view>
         <view class='collection common'>
-          <image mode='widthFix' src='../../images/star.png'></image>20
+          <image mode='widthFix' src='../../images/star.png'></image>
+          <text>20</text>
           <!-- <view>添加两张图片</view> -->
         </view>
         <view class='remark common'>
           <image mode='widthFix' src='../../images/remark.png'></image>
-          <text>12</text>
-        </view>
-        <view class='share common'>
-          <image mode='widthFix' src='../../images/share.png'></image>
           <text>12</text>
         </view>
       </view>
@@ -93,23 +85,14 @@
       <view class='show-foot'>
         <view class='good common'>
           <image mode='widthFix' src='../../images/good.png'></image>
-          <!-- <view>12</view> -->
-          <text>12</text>
-        </view>
-        <view class='view common'>
-          <image mode='widthFix' src='../../images/view.png'></image>
           <text>12</text>
         </view>
         <view class='collection common'>
           <image mode='widthFix' src='../../images/star.png'></image>
-          <!-- <view>添加两张图片</view> -->
+          <text>12</text>
         </view>
         <view class='remark common'>
           <image mode='widthFix' src='../../images/remark.png'></image>
-          <text>12</text>
-        </view>
-        <view class='share common'>
-          <image mode='widthFix' src='../../images/share.png'></image>
           <text>12</text>
         </view>
       </view>
