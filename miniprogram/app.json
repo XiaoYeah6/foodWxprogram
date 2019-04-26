@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/home/home","pages/profile/collection-science/collection-science",
+      "pages/home/home",
+    "pages/science/science",
     "pages/profile/collection/collection",
+"pages/profile/collection-science/collection-science",
     "pages/profile/profile",
     "pages/show/show-comment/show-comment",
-    "pages/science/science",
     "pages/publish/publish",
     "pages/show/show",
     "pages/science/science-list/science-detail/science-detail",

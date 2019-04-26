@@ -1,16 +1,15 @@
-// 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
-cloud.init()
+cloud.init({
+  env: 'test-o4xhh'
+})
 
-// 云函数入口函数
-exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
+exports.main = (event, context,cb) => {
+  // 这里获取到的 openId、 appId 是可
+  const { OPENID } = cloud.getWXContext()
 
   return {
-    event,
-    openid: wxContext.OPENID,
-    appid: wxContext.APPID,
-    unionid: wxContext.UNIONID,
+    OPENID
   }
+
 }

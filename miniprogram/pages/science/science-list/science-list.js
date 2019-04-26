@@ -36,6 +36,7 @@ Page({
         this.setData({
           scienceList: res.data
         })
+        console.log(res.data);
       },
       fail() {
         // 科普分类的url

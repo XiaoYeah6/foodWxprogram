@@ -1,33 +1,28 @@
-<!--pages/profile/collection/collection.wxml-->
-
-<!-- <import src='../../../template/home-detail-tem.wxml'/> -->
-<!-- <template is="home-detail"/> -->
-
 
 <view id='container'>
   <view class='header'>
     <view class='classify'>
       <button class='food'>美食</button>
-      <button class='science'>科普</button>
+      <button class='science' bindtap="toScienceCollec">科普</button>
     </view>
   </view>
   <view class='list'>
-    <view class='recommend-item' wx:for="0000">
+    <view class='recommend-item' wx:for="{{collectionFoods}}" bindtap='showDetail' data-id="{{item.foodId}}">
       <view>
-        <image class='main-bg' mode='widthFix' src="../../../images/food2.jpeg"></image>
+        <image class='main-bg' mode='widthFix' src="{{item.imgUrl}}"></image>
       </view>
       <view class='item-infor'>
-        <view class='title'>name</view>
-        <view class='material'>这是一段文字这是一段问题这是一段文字这是一段问题</view>
+        <view class='title'>{{item.title}}</view>
+        <view class='material'>{{item.content}}</view>
         <view class='remark'>
           <view class='view common'>
-            <image src='/images/view.png' mode='widthFix'></image>5
+            <image src='/images/view.png' mode='widthFix'></image>{{item.viewCount}}
           </view>
           <view class='star common'>
-            <image src='/images/star.png' mode='widthFix'></image>108
+            <image src='/images/star.png' mode='widthFix'></image>{{item.starCount}}
           </view>
           <view class='share common'>
-            <image src='/images/share.png' mode='widthFix'></image>108
+            <image src='/images/share.png' mode='widthFix'></image>{{item.shareCount}}
           </view>
         </view>
       </view>

@@ -2,6 +2,9 @@
   display: flex;
   padding-top: 10px;
   background: #fff;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 .star-share .common{
   width: 50%;

@@ -18,11 +18,39 @@ Page({
     })
   },
 
+  collection() {
+    let openId;
+    utils.default.getOpenId().then((res) => {
+      openId = res.result.OPENID;
+
+      // 在这个位置
+      // 把数据存入数据库
+      const db = wx.cloud.database();
+      const scienceCollection = db.collection('collection_science');
+
+      scienceCollection.add({
+        data: {
+          openId: openId,
+          scienceId: this.data.scienceDetail.id,
+          time: new Date().getTime(),
+          title: this.data.scienceDetail.title
+        }
+      }).then((res) => {
+        console.log(res);
+      }).catch(console.error);
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     let id = options.id;
+    console.log(id);
+    this.setData({
+      scienceId: id
+    });
     let that = this;
 
     wx.getStorage({

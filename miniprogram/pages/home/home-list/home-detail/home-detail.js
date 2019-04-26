@@ -7,7 +7,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detailInfor: {}
+    detailInfor: {},
+    foodId:'',
+    pic: "",
+    title: "",
+    content: "",
+
+    viewCount: 0,
+    starCount: 0,
+    shareCount: 0
+  },
+
+  collection(){
+    // console.log(this.data.foodId);
+    let openId;
+    utils.default.getOpenId().then((res)=>{
+      openId = res.result.OPENID;
+
+      // 在这个位置
+      // 把数据存入数据库
+      const db = wx.cloud.database();
+      const foodCollection = db.collection('collection_food');
+
+      foodCollection.add({
+        data: {
+          openId: openId,
+          foodId: this.data.foodId,
+          viewCount: this.data.viewCount,
+          starCount: this.data.starCount,
+          shareCount: this.data.shareCount,
+          time: new Date().getTime(),
+          imgUrl: this.data.pic,
+          title: this.data.name,
+          content: utils.default.deleWrap1(this.data.content)
+        }
+      }).then((res)=>{
+        console.log(res);
+      }).catch(console.error);
+    })
   },
 
 
@@ -30,7 +67,12 @@ Page({
       key: "detailInfor" + options.id,
       success: function(res) {
         that.setData({
-          detailInfor: res.data
+          detailInfor: res.data,
+          foodId: res.data.id,
+          pic: res.data.pic,
+          title: res.data.name,
+          content: utils.default.deleWrap1(res.data.content)
+          // content: res.data.content
         });
         console.log(res.data);
       },
@@ -49,7 +91,11 @@ Page({
           utils.default.setStorage("detailInfor" + options.id, data);
           // 更新数据
           that.setData({
-            detailInfor: data
+            detailInfor: data,
+            foodId: data.id,
+            pic: res.data.pic,
+            title: res.data.name,
+            content: utils.default.deleWrap1(res.data.content)
           });
         });
 

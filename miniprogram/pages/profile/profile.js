@@ -1,18 +1,19 @@
 // pages/profile/profile.js
+let constUrl = require("../../utils/const.js");
+let utils = require("../../utils/util.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    openId: ""
   },
 
   share(){
     wx.showShareMenu({
       withShareTicket: true 
     })
-    // console.log(asdfgfh);
   },
 
   clearStor(){
@@ -31,11 +32,21 @@ Page({
     })
   },
 
+  showCollection(e){
+    wx.navigateTo({
+      url: './collection/collection?openId='+e.currentTarget.dataset.openid,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    utils.default.getOpenId().then((res)=>{
+      this.setData({
+        openId: res.result.OPENID
+      });
+    });
   },
 
   /**

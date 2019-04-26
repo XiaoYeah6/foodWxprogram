@@ -2,10 +2,10 @@
 App({
   onLaunch: function () {
 
-
-    wx.cloud.init({
-      env: "test-o4xhh"
-    });
     this.globalData = {}
   }
+});
+
+wx.cloud.init({
+  env: "test-o4xhh"
 });

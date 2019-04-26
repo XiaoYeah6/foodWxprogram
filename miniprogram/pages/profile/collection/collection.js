@@ -5,14 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+    collectionFoods: [],
+    openId:""
+  },
 
+  showDetail(e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../home/home-list/home-detail/home-detail?id=' + id,
+    })
+  },
+
+  toScienceCollec(){
+    wx.redirectTo({
+      url: '../collection-science/collection-science?openId='+this.data.openId,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      openId: options.openId
+    });
+    const db=wx.cloud.database();
+    db.collection("collection_food").where({
+      _openid: options.openId // 填入当前用户 openid
+    }).get().then((res)=>{
+      this.setData({
+        collectionFoods: res.data
+      });
+    });
   },
 
   /**

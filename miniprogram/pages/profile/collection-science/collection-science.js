@@ -1,18 +1,35 @@
 // pages/profile/collection-science/collection-science.js
+let constUrl = require("../../../utils/const.js");
+let utils = require("../../../utils/util.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    scienceColletions: []
+  },
 
+  showScienceDetail(e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../science/science-list/science-detail/science-detail?' + utils.default.dealQuery({ id }),
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const db = wx.cloud.database();
+    db.collection("collection_science").where({
+      _openid: options.openId // 填入当前用户 openid
+    }).get().then((res) => {
+      this.setData({
+        scienceColletions: res.data
+      });
+    });
+    
   },
 
   /**
