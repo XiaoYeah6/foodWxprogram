@@ -72,9 +72,7 @@ Page({
           pic: res.data.pic,
           title: res.data.name,
           content: utils.default.deleWrap1(res.data.content)
-          // content: res.data.content
         });
-        console.log(res.data);
       },
       fail() {
         let menuDetailUrl = constUrl.default.menuDetailUrl + utils.default.dealQuery(Object.assign({
@@ -93,9 +91,9 @@ Page({
           that.setData({
             detailInfor: data,
             foodId: data.id,
-            pic: res.data.pic,
-            title: res.data.name,
-            content: utils.default.deleWrap1(res.data.content)
+            pic: data.pic,
+            title: data.name,
+            content: utils.default.deleWrap1(data.content)
           });
         });
 

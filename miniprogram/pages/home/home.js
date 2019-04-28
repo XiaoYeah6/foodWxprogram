@@ -27,13 +27,15 @@ Page({
     }
   },
 
-  search(e){
+  search(e) {
     wx.navigateTo({
-      url: './home-list/home-list?' + utils.default.dealQuery(Object.assign(this.data.searchUrlInfor, { keyword: e.detail.value.searchName}))
+      url: './home-list/home-list?' + utils.default.dealQuery(Object.assign(this.data.searchUrlInfor, {
+        keyword: e.detail.value.searchName
+      }))
     })
   },
 
-  // 点击每日推荐显示详情页面
+  // 点击热门分类显示详情页面
   showDetail(e) {
     let id = e.currentTarget.dataset.classid;
     wx.navigateTo({
@@ -62,7 +64,9 @@ Page({
       fail() {
         // 热门分类请求的url
         // 处理url接口
-        let menuUrl = constUrl.default.menuUrl + utils.default.dealQuery({ appkey: constUrl.default.menuAppkey });
+        let menuUrl = constUrl.default.menuUrl + utils.default.dealQuery({
+          appkey: constUrl.default.menuAppkey
+        });
         // 请求数据
         utils.default.requestData(menuUrl).then((res) => {
           // 设置缓存数据
@@ -76,43 +80,69 @@ Page({
     })
 
     // 每日推荐列表
-    // 获取缓存数据
-    wx.getStorage({
-      key: 'recommendList',
-      success: function(res) {
+    // 思路： 先判断数据库里面是否含有classid这类的数据；
+    // 如果有直接取出来，
+    // 如果没有首先从接口中去请求数据
+    // 然后把数据显示到页面的同时，也存入数据库中
+
+    const db=wx.cloud.database();
+    const foodList = db.collection('food-list');
+    foodList.where({
+      classid: "6" //当前每日推荐的classid
+    }).get().then((res)=>{
+      if(res.data[0]){
         that.setData({
           recommendList: res.data
         });
-      },
-      fail() {
-        // let recommendListUrl = constUrl.default.recommendListUrl;
-        let recommendListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.recommendListInfor, { appkey: constUrl.default.menuAppkey}));
+      } else {
+        // 请求的url接口
+        let recommendListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.recommendListInfor, {
+          appkey: constUrl.default.menuAppkey
+        }));
+
         // 请求数据
+        let recommendList = [];
         utils.default.requestData(recommendListUrl).then((res) => {
 
-          // 打包请求的数据
-          let recommendList = [];
-          res.data.result.result.list.forEach((item) => {
-            let aRem = {};
-            aRem.content = utils.default.deleWrap(item.content);
-            aRem.id = item.id;
-            aRem.name = item.name;
-            aRem.pic = item.pic;
-            recommendList.push(aRem);
+          let resultList = res.data.result.result.list;
+          // 获取用户的openid
+          utils.default.getOpenId().then((res) => {
+            let openId = res.result.OPENID;
+
+            // 打包请求的数据
+            resultList.forEach((item) => {
+              let aRem = {};
+              aRem.content = utils.default.deleWrap(item.content);
+              aRem.id = item.id;
+              aRem.name = item.name;
+              aRem.pic = item.pic;
+              aRem.time = new Date().getTime();
+              aRem.viewCount = 0;
+              aRem.starCount = 0;
+              aRem.shareCount = 0;
+              aRem.classid = item.classid;
+              // 同时把数据显示到页面上面
+              recommendList.push(aRem);
+              // 把数据存入到数据库中
+              foodList.add({
+                data: aRem
+              }).then((res) => {
+                console.log(res);
+              }).catch(console.error);
+            });
+
+            // 更新数据
+            that.setData({
+              recommendList
+            });
           });
 
-          // 把数据存储在缓存中
-          utils.default.setStorage("recommendList", recommendList);
-          // 更新数据
-          that.setData({
-            recommendList
-          });
+
+
         });
 
       }
-    })
-
-
+    });
   },
 
   /**
