@@ -22,13 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that=this;
     const db = wx.cloud.database()
-    db.collection('publish-list').where({
-    }).orderBy('time', 'desc').limit(20).get().then(res => {
-      // console.log(res.data)
-      this.setData({
+    db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
+      that.setData({
         showInfors: res.data
       });
+      console.log(res.data);
     })
   },
 

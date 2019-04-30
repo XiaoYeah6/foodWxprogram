@@ -1,5 +1,5 @@
 // pages/show/show-comment/show-comment.js
-const db= wx.cloud.database();
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -12,9 +12,9 @@ Page({
     commentLists: []
   },
 
-  formSubmit(e){
-    let that=this;
-    let content=e.detail.value.commentContent;
+  formSubmit(e) {
+    let that = this;
+    let content = e.detail.value.commentContent;
     this.setData({
       commentContent: content
     });
@@ -27,13 +27,13 @@ Page({
         author: that.data.author,
         showId: that.data.showId
       }
-    }).then((res)=>{
+    }).then((res) => {
       wx.showToast({
         title: '评论成功',
       })
       db.collection("comment-list").where({
         showId: that.data.showId
-      }).limit(10).get().then((res) => {
+      }).limit(20).get().then((res) => {
         that.setData({
           commentLists: res.data
         });
@@ -42,22 +42,39 @@ Page({
         commentContent: ""
       });
     });
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let that=this;
+  onLoad: function(options) {
+    let that = this;
+    // 获取说说的唯一标识
     this.setData({
-      author: options.author,
-      img: options.img,
       showId: options.id
     });
 
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              that.setData({
+                img: res.userInfo.avatarUrl,
+                author: res.userInfo.nickName
+              });
+            }
+          })
+        }
+      }
+    })
+
     db.collection("comment-list").where({
       showId: options.id
-    }).limit(10).get().then((res)=>{
+    }).limit(20).get().then((res) => {
       that.setData({
         commentLists: res.data
       });
@@ -67,49 +84,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

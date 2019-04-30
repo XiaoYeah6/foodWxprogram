@@ -7,7 +7,7 @@
       (date.getMonth() + 1 < 10 ?
         "0" + (date.getMonth() + 1) :
         date.getMonth() + 1);
-    var D = date.getDate() + 1;
+    var D = date.getDate();
     return M + "月" + D + "日";
   }
   // 注意导出代码
@@ -51,7 +51,7 @@
           <text>{{item.starCount}}</text>
           <!-- <view>添加两张图片</view> -->
         </view>
-        <view class='remark common' bindtap='showComment' data-author="{{item.author}}" data-img="{{item.authorImg}}" data-id="{{item._id}}">
+        <view class='remark common' bindtap='showComment'  data-id="{{item._id}}">
           <image mode='widthFix' src='../../images/remark.png'></image>
           <text>{{item.commentCount}}</text>
         </view>
