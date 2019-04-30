@@ -2,9 +2,9 @@
 <view id='container'>
   <view class='user-infor'>
     <view class='user-img'>
-      <image src='../../images/food.jpg'></image>
+      <image src='{{userImg}}'></image>
     </view>
-    <view class='text'>欢迎，Endl</view>
+    <view class='text'>欢迎，{{userName}}</view>
   </view>
 
   <view class='user-list'>
@@ -12,8 +12,8 @@
       <view class='text'>我的收藏</view>
       <image src='../../images/arrow.png'></image>
     </view>
-    <view class='history common'>
-      <view class='text'>浏览记录</view>
+    <view class='history common' bindtap='showPublish' data-openId="{{openId}}">
+      <view class='text'>我的发表</view>
       <image src='../../images/arrow.png'></image>
     </view>
     <view class='share common' bindtap='share'>

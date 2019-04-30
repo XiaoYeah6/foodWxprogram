@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openId: ""
+    openId: "",
+    userName:"",
+    userImg: ""
   },
 
   share(){
@@ -37,16 +39,39 @@ Page({
       url: './collection/collection?openId='+e.currentTarget.dataset.openid,
     })
   },
+  showPublish(e) {
+    wx.navigateTo({
+      url: './myPublish/myPublish?openId=' + e.currentTarget.dataset.openid,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that=this;
     utils.default.getOpenId().then((res)=>{
       this.setData({
         openId: res.result.OPENID
       });
     });
+
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              that.setData({
+                userName: res.userInfo.nickName,
+                userImg: res.userInfo.avatarUrl
+              });
+            }
+          })
+        }
+      }
+    })
   },
 
   /**

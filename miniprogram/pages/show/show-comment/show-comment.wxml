@@ -1,29 +1,29 @@
 <!--pages/show/show-comment/show-comment.wxml-->
 <view id='container'>
   <view class='comment-list'>
-    <view class='comment-item' wx:for="000000000000">
+    <view class='comment-item' wx:for="{{commentLists}}">
       <view class='header'>
         <view class='author-img'>
-          <image mode="widthFix" src='../../../images/food2.jpeg'></image>
+          <image mode="widthFix" src='{{item.authorImg}}'></image>
         </view>
         <view class='author-infor'>
-          <view class='name'>name</view>
+          <view class='name'>{{item.author}}</view>
           <view class='time'>4月25日</view>
         </view>
       </view>
       <view class='content'>
-        e w fgt r 是 的vyu ysta 此次f A此 次D SG DGH
+      {{item.commentContent}}
       </view>
     </view>
   </view>
   <view class='comment-box'>
-    <form>
+    <form bindsubmit="formSubmit">
       <view class='input'>
         <image class='pencil-icon' mode='widthFix' src='../../../images/pencil-icon.png'></image>
-        <input placeholder='随乐而起，有感而发'></input>
+        <input placeholder='随乐而起，有感而发' name="commentContent" value='{{commentContent}}'></input>
         <image class='happy-icon' mode='widthFix' src='../../../images/happy-icon.png'></image>
       </view>
-      <button class='submit-btn'>发送</button>
+      <button class='submit-btn' form-type='submit'>发送</button>
     </form>
   </view>
 </view>

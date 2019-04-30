@@ -1,3 +1,4 @@
+<!--pages/profile/myPublish/myPublish.wxml-->
 <!--pages/show/show.wxml-->
 <wxs module="foo">
   var dealTime = function(timestamp) {
@@ -18,7 +19,7 @@
 
 <view id='container'>
   <view class='show-list'>
-    <view class='show-item' wx:for="{{showInfors}}">
+    <view class='show-item' wx:for="{{myShowInfors}}">
       <view class='show-head'>
         <view class='author-img'>
           <image mode='widthFix' src='{{item.authorImg}}'></image>
@@ -43,16 +44,16 @@
 
       <view class='show-foot'>
         <view class='good common'>
-          <image mode='widthFix' src='../../images/good.png'></image>
+          <image mode='widthFix' src='../../../images/good.png'></image>
           <text>{{item.goodCount}}</text>
         </view>
         <view class='collection common'>
-          <image mode='widthFix' src='../../images/star.png'></image>
+          <image mode='widthFix' src='../../../images/star.png'></image>
           <text>{{item.starCount}}</text>
           <!-- <view>添加两张图片</view> -->
         </view>
-        <view class='remark common' bindtap='showComment' data-author="{{item.author}}" data-img="{{item.authorImg}}" data-id="{{item._id}}">
-          <image mode='widthFix' src='../../images/remark.png'></image>
+        <view class='remark common'>
+          <image mode='widthFix' src='../../../images/remark.png'></image>
           <text>{{item.commentCount}}</text>
         </view>
       </view>

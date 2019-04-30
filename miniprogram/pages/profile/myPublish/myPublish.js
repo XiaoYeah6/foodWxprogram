@@ -1,21 +1,11 @@
-// pages/show/show.js
-let constUrl = require("../../utils/const.js");
-let utils = require("../../utils/util.js");
-
+// pages/profile/myPublish/myPublish.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showInfors: []
-  },
-
-  showComment(e){
-    let query=utils.default.dealQuery(e.currentTarget.dataset);
-    wx.navigateTo({
-      url: './show-comment/show-comment?'+query
-    })
+    myShowInfors: []
   },
 
   /**
@@ -24,10 +14,10 @@ Page({
   onLoad: function (options) {
     const db = wx.cloud.database()
     db.collection('publish-list').where({
-    }).orderBy('time', 'desc').limit(20).get().then(res => {
-      // console.log(res.data)
+      _openid: "oNy4J44M2VZ7KS-gMJOW7VDt3L6k"  // 填入当前用户 openid
+    }).orderBy('time', 'desc').limit(10).get().then(res => {
       this.setData({
-        showInfors: res.data
+        myShowInfors: res.data
       });
     })
   },
