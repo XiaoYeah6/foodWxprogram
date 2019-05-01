@@ -80,6 +80,6 @@
   color: #8e8e8e;
 }
 .show-foot .share image{
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
 }

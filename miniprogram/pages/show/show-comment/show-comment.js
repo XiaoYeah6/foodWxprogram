@@ -9,7 +9,9 @@ Page({
     author: "",
     img: "",
     showId: "",
-    commentLists: []
+    commentLists: [],
+    commentCount: 0,
+    isComment: false
   },
 
   formSubmit(e) {
@@ -18,6 +20,7 @@ Page({
     this.setData({
       commentContent: content
     });
+
 
     db.collection("comment-list").add({
       data: {
@@ -41,36 +44,41 @@ Page({
       that.setData({
         commentContent: ""
       });
-    });
 
+      // 更新云端数据库
+      if (!that.data.iscomment){
+        that.setData({
+          isComment: true
+        });
+      }
+      wx.cloud.callFunction({
+        name: "getCommentData",
+        data: {
+          showid: that.data.id,
+          commentcount: that.data.commentCount + 1,
+          iscomment: that.data.isComment
+        }
+      }).then((res) => {
+        console.log(res);
+      });
+
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options);
     let that = this;
     // 获取说说的唯一标识
     this.setData({
-      showId: options.id
+      showId: options.id,
+      author: options.author,
+      img: options.img,
+      commentCount: parseInt(options.commentcount),
+      isComment: options.iscomment
     });
-
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success(res) {
-              that.setData({
-                img: res.userInfo.avatarUrl,
-                author: res.userInfo.nickName
-              });
-            }
-          })
-        }
-      }
-    })
 
     db.collection("comment-list").where({
       showId: options.id

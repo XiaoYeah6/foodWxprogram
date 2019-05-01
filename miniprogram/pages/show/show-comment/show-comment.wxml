@@ -1,4 +1,5 @@
 <!--pages/show/show-comment/show-comment.wxml-->
+<wxs src="../../../utils/dealTime.wxs" module="tools" />
 <view id='container'>
   <view class='comment-list'>
     <view class='comment-item' wx:for="{{commentLists}}">
@@ -8,7 +9,7 @@
         </view>
         <view class='author-infor'>
           <view class='name'>{{item.author}}</view>
-          <view class='time'>4月25日</view>
+          <view class='time'>{{tools.dealTime(item.time)}}</view>
         </view>
       </view>
       <view class='content'>

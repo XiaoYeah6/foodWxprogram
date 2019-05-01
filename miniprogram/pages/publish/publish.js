@@ -63,9 +63,9 @@ Page({
             // 把云存储里面图片的地址存到数据库中
             imgs: res,
             time: new Date().getTime(),
-            starCount: 0,
             goodCount: 0,
             commentCount: 0,
+            shareCount: 0,
             position: this.data.city+"  "+this.data.district,
             author: this.data.nickName,
             authorImg: this.data.avatarUrl
