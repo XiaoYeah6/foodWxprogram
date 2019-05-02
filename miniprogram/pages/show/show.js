@@ -11,21 +11,161 @@ Page({
   data: {
     showInfors: [],
     img: "",
-    author: ""
+    author: "",
+    openId: ""
   },
 
-  addShare(e){
-    wx.showShareMenu({
-      withShareTicket: true
+  addShare(e) {
+    // wx.showShareMenu({
+    // withShareTicket: true
+    // })
+
+    let that = this;
+    let shareInfor = e.currentTarget.dataset;
+
+    // 此时调用云函数更改数据库
+    wx.cloud.callFunction({
+      name: "getShareData",
+      data: {
+        showid: shareInfor.id,
+        sharecount: shareInfor.sharecount + 1
+      }
+    }).then((res) => {
+      db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
+        that.setData({
+          showInfors: res.data
+        });
+      })
+    });
+
+  },
+
+  addGood(e) {
+    let that = this;
+    let goodInfor = e.currentTarget.dataset;
+
+    // 首先获取用户是否已经点赞的信息，
+    // 然后再进行操作
+
+    db.collection('show-goodinfor').where({
+      _openid: that.data.openId, // 填入当前用户 openid
+      showId: goodInfor.id
+    }).get().then(res => {
+
+      let data = res.data;
+      // 如果此条数据用户没有点过赞
+      // length=0说明用户没有点过赞，不等于0说明点过赞
+
+      // 此时length=0；
+      if (!data.length) {
+        db.collection('show-goodinfor').add({
+            data: {
+              showId: goodInfor.id,
+              isGood: true
+            }
+          })
+          .then(res => {
+            // 此时调用云函数更改数据库
+            wx.cloud.callFunction({
+              name: "getShowData",
+              data: {
+                showid: goodInfor.id,
+                goodcount: goodInfor.goodcount + 1
+              }
+            }).then((res) => {
+              db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
+                that.setData({
+                  showInfors: res.data
+                });
+              })
+            });
+
+            wx.showToast({
+              title: '点赞成功'
+            })
+          })
+          .catch(console.error)
+      } else if (!data[0].isGood) {
+        // 获取这条点赞的唯一表述
+        let goodId = data[0]._id;
+
+        // 此时length不等于0， 用户已经点过赞，可能被取消了
+        // 更新数据库的这条数据， 不需要创建新的记录了
+        db.collection('show-goodinfor').doc(goodId).update({
+            data: {
+              isGood: true
+            }
+          })
+          .then(() => {
+            // 调用云函数更细数据库
+            wx.cloud.callFunction({
+              name: "getShowData",
+              data: {
+                showid: goodInfor.id,
+                goodcount: goodInfor.goodcount + 1
+              }
+            }).then((res) => {
+              db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
+                that.setData({
+                  showInfors: res.data
+                });
+              })
+            });
+            wx.showToast({
+              title: '点赞成功'
+            })
+
+          })
+          .catch(console.error)
+
+      } else {
+        // 获取这条点赞的唯一表述
+        let goodId = data[0]._id;
+
+        // 用户已经点过赞了，此时想取消点赞
+        // 也是要更新这条数据，不需要重新创建新的纪录了
+        db.collection('show-goodinfor').doc(goodId).update({
+            data: {
+              isGood: false
+            }
+          })
+          .then(() => {
+            // 调用云函数更新数据库
+            wx.cloud.callFunction({
+              name: "getShowData",
+              data: {
+                showid: goodInfor.id,
+                goodcount: goodInfor.goodcount - 1
+              }
+            }).then((res) => {
+              db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
+                that.setData({
+                  showInfors: res.data
+                });
+              })
+            });
+
+            wx.showToast({
+              title: '取消点赞'
+            })
+          })
+          .catch(console.error)
+      }
+
+
     })
-    // let that=this;
-    // if (!e.currentTarget.dataset.isshare) {
+
+
+
+
+
+    // if (!e.currentTarget.dataset.isgood) {
     //   wx.cloud.callFunction({
-    //     name: "getShareData",
+    //     name: "getShowData",
     //     data: {
     //       showid: e.currentTarget.dataset.id,
-    //       sharecount: e.currentTarget.dataset.sharecount + 1,
-    //       isshare: !e.currentTarget.dataset.isshare
+    //       goodcount: e.currentTarget.dataset.goodcount + 1,
+    //       isgood: !e.currentTarget.dataset.isgood
     //     }
     //   }).then((res) => {
 
@@ -34,15 +174,14 @@ Page({
     //         showInfors: res.data
     //       });
     //     })
-
     //   });
     // } else {
     //   wx.cloud.callFunction({
-    //     name: "getShareData",
+    //     name: "getShowData",
     //     data: {
     //       showid: e.currentTarget.dataset.id,
-    //       sharecount: e.currentTarget.dataset.sharecount - 1,
-    //       isshare: !e.currentTarget.dataset.isshare
+    //       goodcount: e.currentTarget.dataset.goodcount -1,
+    //       isgood: !e.currentTarget.dataset.isgood
     //     }
     //   }).then((res) => {
     //     db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
@@ -52,53 +191,17 @@ Page({
     //     })
     //   });
     // }
-  },
-
-  addGood(e) {
-    let that=this;
-    // console.log(e.currentTarget.dataset);
-    if (!e.currentTarget.dataset.isgood) {
-      wx.cloud.callFunction({
-        name: "getShowData",
-        data: {
-          showid: e.currentTarget.dataset.id,
-          goodcount: e.currentTarget.dataset.goodcount + 1,
-          isgood: !e.currentTarget.dataset.isgood
-        }
-      }).then((res) => {
-
-        db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
-          that.setData({
-            showInfors: res.data
-          });
-        })
-
-      });
-    } else {
-      wx.cloud.callFunction({
-        name: "getShowData",
-        data: {
-          showid: e.currentTarget.dataset.id,
-          goodcount: e.currentTarget.dataset.goodcount -1,
-          isgood: !e.currentTarget.dataset.isgood
-        }
-      }).then((res) => {
-        db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
-          that.setData({
-            showInfors: res.data
-          });
-        })
-      });
-    }
 
   },
 
   showComment(e) {
+    console.log(e.currentTarget);
     Object.assign(e.currentTarget.dataset, {
       img: this.data.img,
       author: this.data.author
     });
     let query = utils.default.dealQuery(e.currentTarget.dataset);
+
     wx.navigateTo({
       url: './show-comment/show-comment?' + query
     })
@@ -109,6 +212,15 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+
+    // 获取用户的openID
+    utils.default.getOpenId().then((res) => {
+      that.setData({
+        openId: res.result.OPENID
+      });
+    });
+
+    // 加载showlist页面信息
     db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
       that.setData({
         showInfors: res.data

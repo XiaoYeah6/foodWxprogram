@@ -67,6 +67,7 @@
 }
 .show-foot .common{
   width: 25%;
+  position: relative; 
 }
 .show-foot .common image{
   width: 18px;
@@ -82,4 +83,12 @@
 .show-foot .share image{
   width: 13px;
   height: 13px;
+}
+
+.show-foot .share .share-btn{
+  position: absolute;
+  top: 0px;
+  left: -5px;
+  width: 13px;
+  height: 25px;
 }

@@ -27,19 +27,20 @@
       </view>
 
       <view class='show-foot'>
-        <view class='good common' bindtap='addGood'  data-id="{{item._id}}" data-goodCount="{{item.goodCount}}" data-isGood="{{item.isGood}}">
-          <image wx:if="{{item.isGood}}" mode='widthFix' src='../../images/good-s.png'></image>
-          <image wx:else mode='widthFix' src='../../images/good.png'></image>
+        <view class='good common' bindtap='addGood'  data-id="{{item._id}}" data-goodCount="{{item.goodCount}}">
+          <!-- <image wx:if="{{item.isGood}}" mode='widthFix' src='../../images/good-s.png'></image> -->
+          <image mode='widthFix' src='../../images/good.png'></image>
           <text>{{item.goodCount}}</text>
         </view>
-        <view class='share common'  bindtap='addShare'  data-id="{{item._id}}" data-shareCount="{{item.shareCount}}" data-isShare="{{item.isShare}}">
-          <image wx:if="{{item.isShare}}" mode='widthFix' src='../../images/share-s.png'></image>
-          <image wx:else mode='widthFix' src='../../images/share.png'></image>
+        <view class='share common'  bindtap='addShare'  data-id="{{item._id}}" data-shareCount="{{item.shareCount}}">
+          <!-- <image wx:if="{{item.isShare}}" mode='widthFix' src='../../images/share-s.png'></image> -->
+          <image mode='widthFix' src='../../images/share.png'></image>
+          <button open-type="share" class='share-btn'></button>
           <text>{{item.shareCount}}</text>
         </view> 
-        <view class='remark common' bindtap='showComment'  data-id="{{item._id}}"  data-commentCount="{{item.commentCount}}" data-isComment="{{item.isComment}}">
-          <image wx:if="{{item.isComment}}" mode='widthFix' src='../../images/comment-s.png'></image>
-          <image wx:else mode='widthFix' src='../../images/remark.png'></image>
+        <view class='remark common' bindtap='showComment'  data-id="{{item._id}}"  data-commentCount="{{item.commentCount}}">
+          <!-- <image wx:if="{{item.isComment}}" mode='widthFix' src='../../images/comment-s.png'></image> -->
+          <image mode='widthFix' src='../../images/remark.png'></image>
           <text>{{item.commentCount}}</text>
         </view>
       </view>

@@ -10,8 +10,7 @@ Page({
     img: "",
     showId: "",
     commentLists: [],
-    commentCount: 0,
-    isComment: false
+    commentCount: 0
   },
 
   formSubmit(e) {
@@ -46,17 +45,12 @@ Page({
       });
 
       // 更新云端数据库
-      if (!that.data.iscomment){
-        that.setData({
-          isComment: true
-        });
-      }
+      // console.log(that.data.commentCount+1);
       wx.cloud.callFunction({
         name: "getCommentData",
         data: {
-          showid: that.data.id,
-          commentcount: that.data.commentCount + 1,
-          iscomment: that.data.isComment
+          showid: that.data.showId,
+          commentcount: that.data.commentCount + 1
         }
       }).then((res) => {
         console.log(res);
@@ -76,8 +70,7 @@ Page({
       showId: options.id,
       author: options.author,
       img: options.img,
-      commentCount: parseInt(options.commentcount),
-      isComment: options.iscomment
+      commentCount: parseInt(options.commentcount)
     });
 
     db.collection("comment-list").where({
