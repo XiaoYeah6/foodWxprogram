@@ -155,43 +155,6 @@ Page({
 
     })
 
-
-
-
-
-    // if (!e.currentTarget.dataset.isgood) {
-    //   wx.cloud.callFunction({
-    //     name: "getShowData",
-    //     data: {
-    //       showid: e.currentTarget.dataset.id,
-    //       goodcount: e.currentTarget.dataset.goodcount + 1,
-    //       isgood: !e.currentTarget.dataset.isgood
-    //     }
-    //   }).then((res) => {
-
-    //     db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
-    //       that.setData({
-    //         showInfors: res.data
-    //       });
-    //     })
-    //   });
-    // } else {
-    //   wx.cloud.callFunction({
-    //     name: "getShowData",
-    //     data: {
-    //       showid: e.currentTarget.dataset.id,
-    //       goodcount: e.currentTarget.dataset.goodcount -1,
-    //       isgood: !e.currentTarget.dataset.isgood
-    //     }
-    //   }).then((res) => {
-    //     db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
-    //       that.setData({
-    //         showInfors: res.data
-    //       });
-    //     })
-    //   });
-    // }
-
   },
 
   showComment(e) {
@@ -256,7 +219,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.onLoad();
   },
 
   /**

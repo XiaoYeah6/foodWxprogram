@@ -1,6 +1,9 @@
 // pages/home/home.js
 let constUrl = require("../../utils/const.js");
 let utils = require("../../utils/util.js");
+
+const db = wx.cloud.database();
+
 Page({
 
   /**
@@ -17,7 +20,7 @@ Page({
 
     // 写死的每日推荐数据接口信息
     recommendListInfor: {
-      classid: 6,
+      classid: "6",
       start: 0,
       num: 10
     },
@@ -85,21 +88,31 @@ Page({
     // 如果没有首先从接口中去请求数据
     // 然后把数据显示到页面的同时，也存入数据库中
 
-    const db=wx.cloud.database();
-    const foodList = db.collection('food-list');
-    foodList.where({
-      classid: "6" //当前每日推荐的classid
-    }).get().then((res)=>{
-      if(res.data[0]){
+    // const foodList = db.collection('food-list');
+    db.collection('food-list').where({
+      classid: that.data.recommendListInfor.classid //当前每日推荐的classid
+    }).limit(10).get().then((res) => {
+
+      if (res.data.length >= 9) {
+        // 无论是从数据库拿数据还是从接口请求数据都是起始start加10；
         that.setData({
-          recommendList: res.data
+          recommendList: res.data,
+          recommendListInfor: {
+            classid: "6",
+            start: that.data.recommendListInfor.start + 10,
+            num: 10
+          }
         });
+        console.log("数据库拿来的数据");
+
       } else {
+        console.log("接口请求数据");
         // 请求的url接口
         let recommendListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.recommendListInfor, {
           appkey: constUrl.default.menuAppkey
         }));
 
+        console.log("初始" + recommendListUrl);
         // 请求数据
         let recommendList = [];
         utils.default.requestData(recommendListUrl).then((res) => {
@@ -124,22 +137,27 @@ Page({
               // 同时把数据显示到页面上面
               recommendList.push(aRem);
               // 把数据存入到数据库中
-              foodList.add({
+              db.collection('food-list').add({
                 data: aRem
               }).then((res) => {
-                console.log(res);
+                // console.log(res);
               }).catch(console.error);
             });
 
-            // 更新数据
+            // 无论是从数据库拿数据还是从接口请求数据都是起始start加10；
             that.setData({
-              recommendList
+              recommendList,
+              recommendListInfor: {
+                classid: "6",
+                start: that.data.recommendListInfor.start + 10,
+                num: 10
+              }
             });
+
           });
 
-
-
         });
+
 
       }
     });
@@ -184,6 +202,85 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let that = this;
+    console.log("页面触底啦");
+    if (that.data.recommendListInfor.start > 50) {
+      wx.showToast({
+        title: '去别处看看吧'
+      })
+    } else {
+      db.collection('food-list').where({
+        classid: that.data.recommendListInfor.classid //当前每日推荐的classid
+      }).skip(that.data.recommendListInfor.start).limit(10).get().then((res) => {
+        if (res.data.length >= 10) {
+
+          // 无论是从数据库拿数据还是从接口请求数据都是起始start加10；
+          that.setData({
+            recommendList: that.data.recommendList.concat(res.data),
+            recommendListInfor: {
+              classid: "6",
+              start: that.data.recommendListInfor.start + 10,
+              num: 10
+            }
+          });
+          console.log("数据库拿来的触底数据");
+
+        } else {
+          console.log("触底接口请求数据");
+          // 请求的url接口
+          let recommendListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.recommendListInfor, {
+            appkey: constUrl.default.menuAppkey
+          }));
+
+          console.log("触底" + recommendListUrl);
+
+          // 请求数据
+          let recommendList = [];
+          utils.default.requestData(recommendListUrl).then((res) => {
+
+            let resultList = res.data.result.result.list;
+            // 获取用户的openid
+            utils.default.getOpenId().then((res) => {
+              let openId = res.result.OPENID;
+
+              // 打包请求的数据
+              resultList.forEach((item) => {
+                let aRem = {};
+                aRem.content = utils.default.deleWrap(item.content);
+                aRem.id = item.id;
+                aRem.name = item.name;
+                aRem.pic = item.pic;
+                aRem.time = new Date().getTime();
+                aRem.viewCount = 0;
+                aRem.starCount = 0;
+                aRem.shareCount = 0;
+                aRem.classid = item.classid;
+                // 同时把数据显示到页面上面
+                recommendList.push(aRem);
+                // 把数据存入到数据库中
+                db.collection('food-list').add({
+                  data: aRem
+                }).then((res) => {
+                  // console.log(res);
+                }).catch(console.error);
+              });
+
+              // 无论是从数据库拿数据还是从接口请求数据都是起始start加10；
+              that.setData({
+                recommendList: that.data.recommendList.concat(recommendList),
+                recommendListInfor: {
+                  classid: "6",
+                  start: that.data.recommendListInfor.start + 10,
+                  num: 10
+                }
+              });
+            });
+          });
+
+        }
+
+      });
+    }
 
   },
 
