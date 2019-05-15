@@ -40,9 +40,8 @@ Page({
 
   // 点击热门分类显示详情页面
   showDetail(e) {
-    let id = e.currentTarget.dataset.classid;
     wx.navigateTo({
-      url: './home-list/home-detail/home-detail?id=' + id,
+      url: './home-list/home-detail/home-detail?' + utils.default.dealQuery(e.currentTarget.dataset) ,
     })
   },
 
@@ -88,7 +87,6 @@ Page({
     // 如果没有首先从接口中去请求数据
     // 然后把数据显示到页面的同时，也存入数据库中
 
-    // const foodList = db.collection('food-list');
     db.collection('food-list').where({
       classid: that.data.recommendListInfor.classid //当前每日推荐的classid
     }).limit(10).get().then((res) => {

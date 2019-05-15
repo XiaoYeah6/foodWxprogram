@@ -18,9 +18,8 @@ Page({
 
   // 点击每日推荐显示详情页面
   showDetail(e) {
-    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: './home-detail/home-detail?id=' + id,
+      url: './home-detail/home-detail?' + utils.default.dealQuery(e.currentTarget.dataset),
     })
   },
 

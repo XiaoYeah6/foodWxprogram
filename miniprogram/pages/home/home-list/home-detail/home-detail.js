@@ -8,50 +8,81 @@ Page({
    */
   data: {
     detailInfor: {},
-    foodId:'',
+    foodId: '',
     pic: "",
     title: "",
     content: "",
 
     viewCount: 0,
     starCount: 0,
-    shareCount: 0
+    shareCount: 0,
+    isCollection: false
   },
 
-  collection(){
-    // console.log(this.data.foodId);
-    let openId;
-    utils.default.getOpenId().then((res)=>{
-      openId = res.result.OPENID;
 
-      // 在这个位置
-      // 把数据存入数据库
-      const db = wx.cloud.database();
-      const foodCollection = db.collection('collection_food');
+  // 注意在这个位置还需要更新home页面foodList数据库的列表数据
 
-      foodCollection.add({
-        data: {
-          openId: openId,
-          foodId: this.data.foodId,
-          viewCount: this.data.viewCount,
-          starCount: this.data.starCount,
-          shareCount: this.data.shareCount,
-          time: new Date().getTime(),
-          imgUrl: this.data.pic,
-          title: this.data.name,
-          content: utils.default.deleWrap1(this.data.content)
-        }
-      }).then((res)=>{
-        console.log(res);
-      }).catch(console.error);
-    })
+  collection() {
+    let that = this;
+    // 判断是否是已经收藏过了
+    if (!that.data.isCollection) {
+      let openId;
+      utils.default.getOpenId().then((res) => {
+        openId = res.result.OPENID;
+
+        // 在这个位置
+        // 把数据存入数据库
+        const db = wx.cloud.database();
+        const foodCollection = db.collection('collection_food');
+
+        foodCollection.add({
+          data: {
+            openId: openId,
+            foodId: this.data.foodId,
+            viewCount: this.data.viewCount,
+            starCount: this.data.starCount,
+            shareCount: this.data.shareCount,
+            time: new Date().getTime(),
+            imgUrl: this.data.pic,
+            title: this.data.name,
+            content: utils.default.deleWrap1(this.data.content)
+          }
+        }).then((res) => {
+          console.log(res);
+          // 更新是否收藏状态数据
+          that.setData({
+            isCollection: true
+          });
+          that.data.starCount = parseInt(that.data.starCount) + 1;
+          that.setData({
+            starCount: that.data.starCount
+          });
+          wx.showToast({
+            title: '亲，收藏成功啦',
+          })
+
+        }).catch(console.error);
+      })
+    } else {
+      wx.showToast({
+        title: '亲，已经收藏了哦',
+      })
+    }
+
+
   },
 
+  // 注意在这个位置还需要更新home页面foodList数据库的列表数据
 
   share() {
     wx.showShareMenu({
       withShareTicket: true
     })
+    // 更新分享的状态数据
+    this.data.shareCount = parseInt(this.data.shareCount) + 1;
+    this.setData({
+      shareCount: this.data.shareCount
+    });
   },
 
 
@@ -59,12 +90,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    console.log(options);
     let that = this;
+
+    that.setData({
+      viewCount: options.viewcount,
+      starCount: options.starcount
+    });
+
+    // 浏览数的更新
+    this.data.viewCount = parseInt(this.data.viewCount) + 1;
+    this.setData({
+      viewCount: this.data.viewCount
+    });
 
     // 请求详情列表数据
     wx.getStorage({
-      key: "detailInfor" + options.id,
+      key: "detailInfor" + options.classid,
       success: function(res) {
         that.setData({
           detailInfor: res.data,
@@ -76,7 +118,7 @@ Page({
       },
       fail() {
         let menuDetailUrl = constUrl.default.menuDetailUrl + utils.default.dealQuery(Object.assign({
-          id: options.id
+          id: options.classid
         }, {
           appkey: constUrl.default.menuAppkey
         }));
@@ -86,7 +128,7 @@ Page({
 
           let data = res.data.result.result;
           // 把数据存储在缓存中
-          utils.default.setStorage("detailInfor" + options.id, data);
+          utils.default.setStorage("detailInfor" + options.classid, data);
           // 更新数据
           that.setData({
             detailInfor: data,

@@ -22,11 +22,11 @@
       <view class='author'>{{detailInfor.name}}</view>
       <view class='view common'>
         <image src="../../../../images/view.png" mode='widthFix'></image>
-        <text>12</text>
+        <text>{{viewCount}}</text>
       </view>
       <view class='collection common'>
         <image src='../../../../images/star.png' mode='widthFix'></image>
-        <text>23</text>
+        <text>{{starCount}}</text>
       </view>
     </view>
     <view class='description'>
@@ -40,7 +40,7 @@
       </view>
       <view class='classfy'>做法：</view>
       <view class='methods' wx:for="{{detailInfor.process}}">
-        <view class='step'>步骤{{index+1}}</view>
+        <view class='step'>步骤 {{index+1}}</view>
         <image mode='widthFix' src='{{item.pic}}'></image>
         <view class='step-infor'>{{index+1}}.{{deleteWrap.deleWrap(item.pcontent)}}</view>
       </view>
