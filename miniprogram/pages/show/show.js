@@ -16,9 +16,6 @@ Page({
   },
 
   addShare(e) {
-    // wx.showShareMenu({
-    // withShareTicket: true
-    // })
 
     let that = this;
     let shareInfor = e.currentTarget.dataset;
@@ -28,7 +25,8 @@ Page({
       name: "getShareData",
       data: {
         showid: shareInfor.id,
-        sharecount: shareInfor.sharecount + 1
+        sharecount: shareInfor.sharecount + 1,
+        databasename: "publish-list"
       }
     }).then((res) => {
       db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
@@ -70,7 +68,8 @@ Page({
               name: "getShowData",
               data: {
                 showid: goodInfor.id,
-                goodcount: goodInfor.goodcount + 1
+                goodcount: goodInfor.goodcount + 1,
+                databasename: "publish-list"
               }
             }).then((res) => {
               db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
@@ -102,7 +101,8 @@ Page({
               name: "getShowData",
               data: {
                 showid: goodInfor.id,
-                goodcount: goodInfor.goodcount + 1
+                goodcount: goodInfor.goodcount + 1,
+                databasename: "publish-list"
               }
             }).then((res) => {
               db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
@@ -135,7 +135,8 @@ Page({
               name: "getShowData",
               data: {
                 showid: goodInfor.id,
-                goodcount: goodInfor.goodcount - 1
+                goodcount: goodInfor.goodcount - 1,
+                databasename: "publish-list"
               }
             }).then((res) => {
               db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {

@@ -50,7 +50,8 @@ Page({
         name: "getCommentData",
         data: {
           showid: that.data.showId,
-          commentcount: that.data.commentCount + 1
+          commentcount: that.data.commentCount + 1,
+          databasename: "publish-list"
         }
       }).then((res) => {
         console.log(res);

@@ -11,9 +11,10 @@ const _ = db.command
 exports.main = async (event, context) => {
   let showid = event.showid;
   let commentcount = event.commentcount;
+  let databasename=event.databasename;
 
   try {
-    return await db.collection('publish-list').doc(showid).update({
+    return await db.collection(databasename).doc(showid).update({
       // data 传入需要局部更新的数据
       data: {
         commentCount: commentcount
