@@ -9,10 +9,11 @@
   padding: 10px 0px;
 }
 .search-container button{
-  width: 28px;
-  height: 28px;
+  width: 31px;
+  height: 31px;
   background: #ccc;
   position: absolute;
+  z-index: 2;
   right: 23px;
   top: 12px;
   background: rgba(0,0,0,0);

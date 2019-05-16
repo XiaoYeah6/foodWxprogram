@@ -58,7 +58,7 @@ Page({
       }).limit(12).get().then((res) => {
 
         // 从接口请求数据，并添加到数据库
-        if (res.data.length < 10) {
+        if (!res.data.length) {
           let homeListUrl = constUrl.default.searchUrl + utils.default.dealQuery(Object.assign({
             // 使用默认的num, 没取到
             num: options.num,
@@ -77,14 +77,14 @@ Page({
             res.data.result.result.list.forEach((item) => {
               let aRem = {};
               aRem.content = utils.default.deleWrap(item.content);
-              aRem.id = item.id;
+              aRem.id = parseInt(item.id);
               aRem.name = item.name;
               aRem.pic = item.pic;
               aRem.time = new Date().getTime();
               aRem.viewCount = 0;
               aRem.starCount = 0;
               aRem.shareCount = 0;
-              aRem.classid = item.classid;
+              aRem.classid = parseInt(item.classid);
 
               // 用于显示到页面上
               menuHomeList.push(aRem);
@@ -111,7 +111,6 @@ Page({
           that.setData({
             menuHomeList: res.data
           });
-          console.log(res.data);
         }
       });
     } else {
@@ -159,7 +158,7 @@ Page({
                   data: aRem
                 }).then((res) => {
                   // 进行一些插入数据库成功的操作
-                  console.log(res);
+                  // console.log(res);
                 }).catch(console.error);
 
               });

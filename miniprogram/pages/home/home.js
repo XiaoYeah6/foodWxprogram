@@ -27,7 +27,45 @@ Page({
     searchUrlInfor: {
       // keyword: "",
       num: 10
-    }
+    },
+    swipeInfors: [{
+        name: "安徽牛肉板面",
+        pic: "http://api.jisuapi.com/recipe/upload/20160719/170436_20026.jpg",
+        _id: "988c1b1b5cdd3ce31318cbe766fae5b6"
+      },
+      {
+        name: "鲍汁过桥排骨",
+        pic: "http://api.jisuapi.com/recipe/upload/20160719/170435_48211.jpg",
+        _id: "96c1cbbe5cdd3ce41317706426e66943"
+      },
+      {
+        name: "藕圆子",
+        pic: "http://api.jisuapi.com/recipe/upload/20160719/170437_70511.jpg",
+        _id: "988c1b1b5cdd3ce41318cbed1a67266b"
+      },
+      {
+        name: "青椒香干炒拉皮",
+        pic: "http://api.jisuapi.com/recipe/upload/20160719/170437_76377.jpg",
+        _id: "96c1cbbe5cdd3ce3131770621aff9e18"
+      }
+    ]
+
+  },
+
+  goDetail(e) {
+    db.collection("food-list").where({
+      _id: e.currentTarget.dataset.id
+    }).get().then((res) => {
+      let obj={
+        sharecount: res.data[0].shareCount,
+        starcount: res.data[0].starCount,
+        viewcount: res.data[0].viewCount,
+        classid: res.data[0].id
+      }
+      wx.navigateTo({
+        url: './home-list/home-detail/home-detail?' + utils.default.dealQuery(obj),
+      })
+    });
   },
 
   search(e) {
@@ -40,8 +78,9 @@ Page({
 
   // 点击热门分类显示详情页面
   showDetail(e) {
+    console.log(e.currentTarget.dataset);
     wx.navigateTo({
-      url: './home-list/home-detail/home-detail?' + utils.default.dealQuery(e.currentTarget.dataset) ,
+      url: './home-list/home-detail/home-detail?' + utils.default.dealQuery(e.currentTarget.dataset),
     })
   },
 
@@ -137,8 +176,7 @@ Page({
               // 把数据存入到数据库中
               db.collection('food-list').add({
                 data: aRem
-              }).then((res) => {
-              }).catch(console.error);
+              }).then((res) => {}).catch(console.error);
             });
 
             // 无论是从数据库拿数据还是从接口请求数据都是起始start加10；

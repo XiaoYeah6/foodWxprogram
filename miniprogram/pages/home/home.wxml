@@ -16,16 +16,8 @@
   duration="500"
   circular="true">
       <block>
-        <swiper-item>
-          <image mode="widthFix" src="../../images/banner.jpg" class="slide-image" width="355" height="150" />
-        </swiper-item>
-        
-        <swiper-item>
-          <image mode="widthFix" src="../../images/banner.jpg" class="slide-image" width="355" height="150" />
-        </swiper-item>
-        
-        <swiper-item>
-          <image mode="widthFix" src="../../images/banner.jpg" class="slide-image" width="355" height="150" />
+        <swiper-item wx:for="{{swipeInfors}}" bindtap="goDetail" data-id="{{item._id}}">
+          <image mode="widthFix" src="{{item.pic}}" class="slide-image" width="355" height="150" />
         </swiper-item>
       </block>
     </swiper>
