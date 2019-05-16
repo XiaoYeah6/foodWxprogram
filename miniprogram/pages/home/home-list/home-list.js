@@ -95,7 +95,7 @@ Page({
               }).then((res) => {
 
                 // 数据添加到数据库成功后的操作
-                console.log(res);
+                // console.log(res);
               }).catch(console.error);
 
             });
@@ -111,14 +111,16 @@ Page({
           that.setData({
             menuHomeList: res.data
           });
+          console.log(res.data);
         }
       });
     } else {
       console.log("非关键字请求数据");
 
       foodList.where({
-        classid: options.classid //当前每日推荐的classid
+        classid: parseInt(options.classid) //当前每日推荐的classid
       }).get().then((res) => {
+
         if (res.data[0]) {
           that.setData({
             menuHomeList: res.data
@@ -165,6 +167,7 @@ Page({
               that.setData({
                 menuHomeList
               });
+              console.log(menuHomeList);
             });
           });
         }

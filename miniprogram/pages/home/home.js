@@ -20,7 +20,7 @@ Page({
 
     // 写死的每日推荐数据接口信息
     recommendListInfor: {
-      classid: "6",
+      classid: 6,
       start: 0,
       num: 10
     },
@@ -96,7 +96,7 @@ Page({
         that.setData({
           recommendList: res.data,
           recommendListInfor: {
-            classid: "6",
+            classid: 6,
             start: that.data.recommendListInfor.start + 10,
             num: 10
           }
@@ -124,21 +124,20 @@ Page({
             resultList.forEach((item) => {
               let aRem = {};
               aRem.content = utils.default.deleWrap(item.content);
-              aRem.id = item.id;
+              aRem.id = parseInt(item.id);
               aRem.name = item.name;
               aRem.pic = item.pic;
               aRem.time = new Date().getTime();
               aRem.viewCount = 0;
               aRem.starCount = 0;
               aRem.shareCount = 0;
-              aRem.classid = item.classid;
+              aRem.classid = parseInt(item.classid);
               // 同时把数据显示到页面上面
               recommendList.push(aRem);
               // 把数据存入到数据库中
               db.collection('food-list').add({
                 data: aRem
               }).then((res) => {
-                // console.log(res);
               }).catch(console.error);
             });
 
@@ -146,7 +145,7 @@ Page({
             that.setData({
               recommendList,
               recommendListInfor: {
-                classid: "6",
+                classid: 6,
                 start: that.data.recommendListInfor.start + 10,
                 num: 10
               }

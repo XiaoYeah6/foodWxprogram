@@ -136,7 +136,7 @@ Page({
     // 获取当前数据的唯一标识 (并且在其成功的回调函数后加上更新浏览状态)
     db.collection('food-list')
       .where({
-        id: options.classid // 填入当前食品的id
+        id: parseInt(options.classid) // 填入当前食品的id
       })
       .limit(1) // 限制返回数量为 1 条
       .get()

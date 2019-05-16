@@ -7,7 +7,7 @@
     </view>
   </view>
   <view class='list'>
-    <view class='recommend-item' wx:for="{{collectionFoods}}" bindtap='showDetail' data-id="{{item.foodId}}">
+    <view class='recommend-item' wx:for="{{collectionFoods}}" bindtap='showDetail' data-sharecount='{{item.shareCount}}' data-starcount='{{item.starCount}}' data-viewcount="{{item.viewCount}}" data-classid="{{item.foodId}}">
       <view>
         <image class='main-bg' mode='widthFix' src="{{item.imgUrl}}"></image>
       </view>

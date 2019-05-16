@@ -1,4 +1,6 @@
 // pages/profile/collection/collection.js
+let constUrl = require("../../../utils/const.js");
+let utils = require("../../../utils/util.js");
 Page({
 
   /**
@@ -10,9 +12,8 @@ Page({
   },
 
   showDetail(e) {
-    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../../home/home-list/home-detail/home-detail?id=' + id,
+      url: '../../home/home-list/home-detail/home-detail?' + utils.default.dealQuery(e.currentTarget.dataset),
     })
   },
 
