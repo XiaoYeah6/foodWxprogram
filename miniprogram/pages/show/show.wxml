@@ -17,8 +17,8 @@
         </view>
       </view>
       <view class='img-container'>
-        <view class='imgs' wx:for="{{item.imgs}}">
-          <image mode='widthFix' src='{{item}}'></image>
+        <view class='imgs' wx:for="{{item.imgs}}" wx:for-item="itemName">
+          <image mode='widthFix' src='{{itemName}}'  bindtap='previewImg' data-imgs="{{item.imgs}}" data-currentimg="{{itemName}}"></image>
         </view>
       </view>
 

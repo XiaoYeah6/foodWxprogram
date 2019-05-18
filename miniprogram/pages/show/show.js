@@ -15,8 +15,15 @@ Page({
     openId: ""
   },
 
-  addShare(e) {
+  // 图片预览并下载功能
+  previewImg(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.currentimg, 
+      urls: e.currentTarget.dataset.imgs
+    })
+  },
 
+  addShare(e) {
     let that = this;
     let shareInfor = e.currentTarget.dataset;
 
