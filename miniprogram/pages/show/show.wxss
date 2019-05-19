@@ -23,6 +23,7 @@
 }
 .user-infor .author{
   font-size: 14px;
+  color: #333;
 }
 .user-infor .show-infor{
   display: flex;
@@ -53,21 +54,25 @@
 
 .content-container{
   padding: 5px 0px;
-  text-indent: 55rpx;
+  text-indent: 15rpx;
   font-size: 14px;
-  color: #333;
   background: #fff;
+}
+.content-container .content{
+  color: #333;
 }
 .show-foot{
   display: flex;
   padding-bottom: 8px;
   margin-bottom: 1px;
   background: #fff;
-  justify-content: space-around;
+  justify-content:space-between;
+  margin-left: -16px;
 }
 .show-foot .common{
   width: 25%;
   position: relative; 
+  text-align: center;
 }
 .show-foot .common image{
   width: 18px;
@@ -75,6 +80,7 @@
   position: relative;
   top: 3px;
   left: -2px;
+  opacity: .4;
 }
 .show-foot .common text{
   font-size: 12px;

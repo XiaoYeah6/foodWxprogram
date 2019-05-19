@@ -4,7 +4,7 @@
     <view class='user-img'>
       <image src='{{userImg}}'></image>
     </view>
-    <view class='text'>欢迎，{{userName}}</view>
+    <view class='text'>欢迎您，{{userName}}</view>
   </view>
 
   <view class='user-list'>

@@ -4,9 +4,7 @@
   width: 100%;
 }
 .food-infor{
-  /* margin: 1px; */
   margin-top: -2px;
-  /* background: #fff; */
 }
 .food-infor .title{
   font-size: 21px;
@@ -49,7 +47,7 @@
 }
 .material{
   font-size: 17px;
-  /* margin: 5px 0px; */
+  margin-bottom: 100rpx;
 }
 .material .classfy{
   padding: 15px 0px 5px 0px;
@@ -76,15 +74,17 @@
   top: 3px;
 }
 .methods{
-  /* border-bottom: 1px solid #ccc; */
   background: #fff;
   margin-bottom: 1px;
+}
+.methods .img{
+  text-align: center;
 }
 .methods .step{
   padding: 7px 0px;
 }
 .methods image{
-  width: 80%;
+  width: 98%;
 }
 .methods .step-infor{
   padding: 7px 0px;

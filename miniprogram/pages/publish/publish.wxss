@@ -31,9 +31,9 @@
   margin-left: 5px;
 }
 .upfile .submit-btn{
-  background: #eee;
+  background: #06c1ae;
   border-radius: 10px;
-  color: #666;
+  color: #efefef;
 }
 .img-container{
   display: flex;

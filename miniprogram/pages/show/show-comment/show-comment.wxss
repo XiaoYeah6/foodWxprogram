@@ -1,6 +1,9 @@
 /* pages/show/show-comment/show-comment.wxss */
+page{
+  background: #f0f3fa;
+}
 #container{
-  background: #fff;
+  height: 100vh;
 }
 .comment-list{
   padding: 5px;
@@ -11,7 +14,6 @@
 .comment-item{
   margin-top: 5px;
   padding-top: 5px;
-  /* border-top: 1px solid #eee; */
 }
 .comment-item .content{
   margin-left: 50px;
@@ -59,22 +61,25 @@
   position: fixed;
   bottom: 0px;
   padding: 8px 10px;
-  background: #fff;
 }
 .comment-box .input{
   display: flex;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #dedede;
 }
 .comment-box .input input{
-  width: 520rpx;
+  width: 500rpx;
 }
 .comment-box .submit-btn{
-  height: 40px;
+  height: 27px;
+  padding: 0px;
+  width: 100rpx;
+  line-height: 27px;
   position: absolute;
-  top: 0px;
-  right: -100rpx;
+  top: 3px;
+  right: -90rpx;
   font-size: 15px;
-  color: #666;
-  background: #fff;
-  padding-left: 10px;
+  color: #efefef;
+  background: #06c1ae;
+  margin-left: 10px;
+  text-align: center;
 }

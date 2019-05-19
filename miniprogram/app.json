@@ -35,7 +35,7 @@
       },
       {
         "pagePath": "pages/show/show",
-        "text": "食秀",
+        "text": "食展",
         "iconPath": "./images/show.png",
         "selectedIconPath": "./images/show-s.png"
       },

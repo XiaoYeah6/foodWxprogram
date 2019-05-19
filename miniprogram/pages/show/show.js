@@ -18,7 +18,7 @@ Page({
   // 图片预览并下载功能
   previewImg(e) {
     wx.previewImage({
-      current: e.currentTarget.dataset.currentimg, 
+      current: e.currentTarget.dataset.currentimg,
       urls: e.currentTarget.dataset.imgs
     })
   },
@@ -70,6 +70,9 @@ Page({
             }
           })
           .then(res => {
+            wx.showToast({
+              title: '点赞成功'
+            })
             // 此时调用云函数更改数据库
             wx.cloud.callFunction({
               name: "getShowData",
@@ -85,10 +88,6 @@ Page({
                 });
               })
             });
-
-            wx.showToast({
-              title: '点赞成功'
-            })
           })
           .catch(console.error)
       } else if (!data[0].isGood) {
@@ -103,6 +102,9 @@ Page({
             }
           })
           .then(() => {
+            wx.showToast({
+              title: '点赞成功'
+            })
             // 调用云函数更细数据库
             wx.cloud.callFunction({
               name: "getShowData",
@@ -118,9 +120,6 @@ Page({
                 });
               })
             });
-            wx.showToast({
-              title: '点赞成功'
-            })
 
           })
           .catch(console.error)
@@ -137,6 +136,9 @@ Page({
             }
           })
           .then(() => {
+            wx.showToast({
+              title: '取消点赞'
+            })
             // 调用云函数更新数据库
             wx.cloud.callFunction({
               name: "getShowData",
@@ -152,14 +154,9 @@ Page({
                 });
               })
             });
-
-            wx.showToast({
-              title: '取消点赞'
-            })
           })
           .catch(console.error)
       }
-
 
     })
 
