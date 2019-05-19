@@ -22,12 +22,13 @@ const showapi_appid ="92922";
 const showapi_sign ="dffb8bfdbad944f8b421891019cf6c19";
 
 // 科普的列表数据的接口
+// https://wxapi.hotapp.cn/proxy/?appkey=hotapp669046474&url=http://www.wxapp-union.com/
 // 参数列表： showapi_timestamp(时间戳)  showapi_appid  showapi_sign  tid（分类id）
-const scienceListUrl ="http://route.showapi.com/90-87";
+const scienceListUrl ="https://wxapi.hotapp.cn/proxy/?appkey=hotapp669046474&url=http://route.showapi.com/90-87";
 
 // 科普详情数据的接口
 // 参数列表： showapi_timestamp(时间戳)  showapi_appid  showapi_sign  id (文章详情id)
-const scienceDetailUrl ="http://route.showapi.com/90-88";
+const scienceDetailUrl ="https://wxapi.hotapp.cn/proxy/?appkey=hotapp669046474&url=http://route.showapi.com/90-88";
 
 
 

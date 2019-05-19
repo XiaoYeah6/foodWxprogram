@@ -85,43 +85,8 @@ Page({
   },
 
   distinguishPhoto() {
-    let that = this;
-    wx.chooseImage({
-      success: res => {
-        wx.getFileSystemManager().readFile({
-          filePath: res.tempFilePaths[0], //选择图片返回的相对路径
-          encoding: 'base64', //编码格式
-          success: res => { //成功的回调
-
-            // 测试传图识别菜品的接口
-            wx.request({
-              url: 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=24.e8b34212fd874f4e1f52e6a962998b06.2592000.1560647934.282335-16271897', 
-              method: "POST",
-              data: {
-                image: res.data,
-                filter_threshold: 0.95
-              },
-              header: {
-                'content-type': 'application/x-www-form-urlencoded' // 默认值
-              },
-              success(res) {
-                if (res.data.length != 0) {
-                  wx.navigateTo({
-                    url: './home-list/home-list?' + utils.default.dealQuery(Object.assign(that.data.searchUrlInfor, {
-                      keyword: res.data.result[0].name
-                    }))
-                  })
-                }else{
-                  wx.showToast({
-                    title: '暂无数据，亲换一个吧',
-                  })
-                }
-              }
-            })
-
-          }
-        })
-      }
+    wx.navigateTo({
+      url: '../photo/photo',
     })
   },
   /**

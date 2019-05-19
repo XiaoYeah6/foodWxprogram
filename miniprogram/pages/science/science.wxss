@@ -15,6 +15,7 @@
   justify-content: space-between;
   margin-left: 5px;
   margin-top: 10px;
+  height: 200px;
 }
 .science-item .img{
   width: 30px;

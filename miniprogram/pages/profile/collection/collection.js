@@ -34,7 +34,7 @@ Page({
     db.collection("collection_food").where({
       _openid: options.openId // 填入当前用户 openid
     }).get().then((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
       this.setData({
         collectionFoods: res.data
       });

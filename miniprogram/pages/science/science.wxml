@@ -4,7 +4,7 @@
   <view class='science-list'>
     <view class='science-item'  wx:for="{{scienceMenu}}" bindtap="showScienceList" data-id="{{item.id}}" data-title="{{item.name}}">
       <view>
-        <image class='img' mode='widthFix' src='{{item.pic}}'></image>
+        <image class='img' src='{{item.pic}}'></image>
       </view>
       <view class='title'>{{item.name}}</view>
       <view class='descrip'>{{item.content}}</view>

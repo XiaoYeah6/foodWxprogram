@@ -3,6 +3,7 @@
 #container{
   margin: 0px;
 }
+
 .search-container {
   position: relative;
   background-color: #06c1ae;
@@ -45,6 +46,10 @@
 
 .swiper {
   background: #fff;
+}
+.swiper image{
+  width: 100%;
+  height: 355rpx;
 }
 
 .hot-search-list .hot-title {

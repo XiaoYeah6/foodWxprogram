@@ -18,7 +18,16 @@ Page({
 
     viewCount: 0,
     starCount: 0,
-    shareCount: 0
+    shareCount: 0,
+    imgs: []
+  },
+
+  // 图片预览并下载功能
+  previewImg(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.pic,
+      urls: this.data.imgs
+    })
   },
 
 
@@ -36,7 +45,9 @@ Page({
       .then(res => {
         //返回数据的长度如果大于0，说明已经收藏了
         if (!res.data.length) {
-
+          wx.showToast({
+            title: '亲，收藏成功啦',
+          })
           // 此时调用云函数更改数据库
           wx.cloud.callFunction({
             name: "getStarCountData",
@@ -58,8 +69,8 @@ Page({
                   openId: openId,
                   foodId: that.data.foodId,
                   viewCount: that.data.viewCount,
-                  starCount: parseInt(that.data.starCount)+1,
-                  shareCount: parseInt(that.data.shareCount)+1,
+                  starCount: parseInt(that.data.starCount) + 1,
+                  shareCount: parseInt(that.data.shareCount) + 1,
                   time: new Date().getTime(),
                   imgUrl: that.data.pic,
                   title: that.data.name,
@@ -71,9 +82,9 @@ Page({
                 that.setData({
                   starCount: that.data.starCount
                 });
-                wx.showToast({
-                  title: '亲，收藏成功啦',
-                })
+                // wx.showToast({
+                //   title: '亲，收藏成功啦',
+                // })
 
               }).catch(console.error);
             })
@@ -178,6 +189,13 @@ Page({
           title: res.data.name,
           content: utils.default.deleWrap1(res.data.content)
         });
+        // 详情图片预览
+        let arr = res.data.process.map((item, index) => {
+          return item.pic;
+        });
+        that.setData({
+          imgs: arr
+        });
       },
       fail() {
         let menuDetailUrl = constUrl.default.menuDetailUrl + utils.default.dealQuery(Object.assign({
@@ -199,6 +217,13 @@ Page({
             pic: data.pic,
             title: data.name,
             content: utils.default.deleWrap1(data.content)
+          });
+          // 详情图片预览
+          let arr = data.process.map((item, index) => {
+            return item.pic;
+          });
+          that.setData({
+            imgs: arr
           });
         });
 

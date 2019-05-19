@@ -16,10 +16,16 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
+    wx.showToast({
+      title: '亲，分享成功',
+    })
   },
 
   collection() {
     let openId;
+    wx.showToast({
+      title: '亲，收藏成功',
+    })
     utils.default.getOpenId().then((res) => {
       openId = res.result.OPENID;
 
@@ -47,7 +53,7 @@ Page({
    */
   onLoad: function(options) {
     let id = options.id;
-    console.log(id);
+    // console.log(id);
     this.setData({
       scienceId: id
     });
@@ -56,18 +62,10 @@ Page({
     wx.getStorage({
       key: 'scienceDetail' + id,
       // 使用缓存会出错， 在此不使用缓存，后期再想办法解决问题
-      // success: (res) => {
-      //   WxParse.wxParse('article', 'html', res.data, that, 20);
-      //   wx.hideLoading();
-
-      //   that.setData({
-      //     scienceDetail: res.data
-      //   })
-      // },
       complete() {
         // 请求数据
         wx.request({
-          url: 'http://route.showapi.com/90-88',
+          url: 'https://wxapi.hotapp.cn/proxy/?appkey=hotapp669046474&url=http://route.showapi.com/90-88',
           data: {
             showapi_timestamp: utils.default.formatterDateTime(),
             showapi_appid: constUrl.default.showapi_appid,

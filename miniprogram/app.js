@@ -1,4 +1,5 @@
 //app.js
+var hotapp = require('./utils/hotapp.js');
 App({
   onLaunch: function () {
 

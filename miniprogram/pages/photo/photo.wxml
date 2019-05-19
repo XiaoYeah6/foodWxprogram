@@ -1,0 +1,9 @@
+<!--pages/photo/photo.wxml-->
+<view id='container'>
+  <view class='title'>
+    传图识菜
+  </view>
+  <view class='img-box'>
+    <image mode='widthfix' src='../../images/add.png' bindtap='distinguishPhoto'></image>
+  </view>
+</view>

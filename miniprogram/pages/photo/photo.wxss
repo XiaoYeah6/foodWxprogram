@@ -1,0 +1,26 @@
+/* pages/photo/photo.wxss */
+page{
+  height: 100%;
+}
+#container{
+  position: relative;
+}
+
+.title{
+  position: absolute;
+  top: 40px;
+  left:  50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #999;
+}
+.img-box{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 95px;
+}
+.img-box image{
+  width: 200px;
+  height: 200px;
+}

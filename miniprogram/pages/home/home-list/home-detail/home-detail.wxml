@@ -41,7 +41,7 @@
       <view class='classfy'>做法：</view>
       <view class='methods' wx:for="{{detailInfor.process}}">
         <view class='step'>步骤 {{index+1}}</view>
-        <image mode='widthFix' src='{{item.pic}}'></image>
+        <image mode='widthFix' src='{{item.pic}}' bindtap='previewImg' data-pic="{{item.pic}}"></image>
         <view class='step-infor'>{{index+1}}.{{deleteWrap.deleWrap(item.pcontent)}}</view>
       </view>
     </view>

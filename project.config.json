@@ -2,7 +2,7 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "functions/",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -19,7 +19,7 @@
 	},
 	"appid": "wx359b3aba3cb0a43b",
 	"projectname": "%E7%BE%8E%E9%A3%9F%E5%B0%8F%E8%9C%97",
-	"libVersion": "2.6.6",
+	"libVersion": "2.7.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

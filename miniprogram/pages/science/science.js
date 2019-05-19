@@ -13,7 +13,7 @@ Page({
         name: "养生保健",
         id: 100,
         content: "健康速递 养生保健",
-        pic: "../../images/nutrition.png"
+        pic: "../../images/express.png"
       },
       {
         name: "营养科普",
@@ -25,13 +25,13 @@ Page({
         name: "养老观察",
         id: 102,
         content: "人群养生 养老观察",
-        pic: "../../images/nutrition.png"
+        pic: "../../images/people.png"
       },
       {
         name: "运动常识",
         id: 109,
         content: "运动常识 有氧瑜伽",
-        pic: "../../images/nutrition.png"
+        pic: "../../images/sport.png"
       },
       {
         name: "心灵氧吧",
@@ -43,7 +43,7 @@ Page({
         name: "疾病科普",
         id: 101,
         content: "体质养生 中医两性",
-        pic: "../../images/nutrition.png"
+        pic: "../../images/medicine.png"
       }
 
     ]
@@ -59,47 +59,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-    let that = this;
-    // wx.getStorage({
-    //   key: 'scienceMenu',
-    //   success: (res) => {
-    //     this.setData({
-    //       scienceMenu: res.data
-    //     })
-    //     console.log(res.data);
-    //   },
-    //   fail() {
-    //     //   // 科普分类的url
-    //     //   // let menuUrl = "http://route.showapi.com/90-86?showapi_appid=92670&showapi_sign&4e87aa3a7c724690be471832a5b48ae0";
-    //     //   // 请求数据
-    //     wx.request({
-    //       url: 'http://route.showapi.com/90-86',
-    //       data: {
-    //         showapi_timestamp: utils.default.formatterDateTime(),
-    //         showapi_appid: '92670',
-    //         showapi_sign: '4e87aa3a7c724690be471832a5b48ae0',
-    //       },
-    //       header: {
-    //         'content-type': 'application/json' // 默认值
-    //       },
-    //       success(res) {
-    //         let obj = res.data.showapi_res_body.list;
-    //         // 定义一个数组用于保存四个分类数据
-    //         // let arr = [];
-    //         // arr.push(obj[0], obj[12], obj[7], obj[6]);
-    //         // 设置缓存数据
-    //         // utils.default.setStorage('scienceMenu', arr);
-    //         // that.setData({
-    //           // scienceMenu: arr
-    //         // });
-    //         obj[6], obj[9], 
-    //         console.log(obj);
-    //       }
-    //     })
-    //   }
-    // })
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
