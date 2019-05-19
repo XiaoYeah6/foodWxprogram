@@ -30,22 +30,22 @@ Page({
     },
     swipeInfors: [{
         name: "安徽牛肉板面",
-        pic: "http://api.jisuapi.com/recipe/upload/20160719/170436_20026.jpg",
+        pic: "../../images/food1.jpg",
         _id: "988c1b1b5cdd3ce31318cbe766fae5b6"
       },
       {
         name: "鲍汁过桥排骨",
-        pic: "http://api.jisuapi.com/recipe/upload/20160719/170435_48211.jpg",
+        pic: "../../images/food3.jpg",
         _id: "96c1cbbe5cdd3ce41317706426e66943"
       },
       {
         name: "藕圆子",
-        pic: "http://api.jisuapi.com/recipe/upload/20160719/170437_70511.jpg",
+        pic: "../../images/food2.jpg",
         _id: "988c1b1b5cdd3ce41318cbed1a67266b"
       },
       {
         name: "青椒香干炒拉皮",
-        pic: "http://api.jisuapi.com/recipe/upload/20160719/170437_76377.jpg",
+        pic: "../../images/food4.jpg",
         _id: "96c1cbbe5cdd3ce3131770621aff9e18"
       }
     ]
