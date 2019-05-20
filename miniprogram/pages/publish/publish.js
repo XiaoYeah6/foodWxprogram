@@ -34,62 +34,68 @@ Page({
   // 发表的时候缺少地理位置
 
   formSubmit(e) {
+    if (e.detail.value.content) {
+      let promiseArr = [];
+      this.data.imgs.forEach((item) => {
+        promiseArr.push(new Promise((resolve, reject) => {
+          // 每次只能上传到云存储中一张图片
+          wx.showLoading();
+          wx.cloud.uploadFile({
+            cloudPath: new Date().getTime() + ".png",
+            filePath: item,
+          }).then((res) => {
+            resolve(res.fileID);
+          }).catch(error => {
+            console.log(error);
+            reject();
+          });
+        }));
+      });
 
-    let promiseArr = [];
-    this.data.imgs.forEach((item) => {
-      promiseArr.push(new Promise((resolve, reject) => {
-        // 每次只能上传到云存储中一张图片
-        wx.showLoading();
-        wx.cloud.uploadFile({
-          cloudPath: new Date().getTime() + ".png",
-          filePath: item,
-        }).then((res) => {
-          resolve(res.fileID);
-        }).catch(error => {
-          console.log(error);
-          reject();
-        });
-      }));
-    });
+      Promise.all(promiseArr).then((res) => {
+        // console.log(res); // 返回的是图片地址数组
+        wx.hideLoading();
 
-
-    Promise.all(promiseArr).then((res) => {
-      console.log(res); // 返回的是图片地址数组
-      wx.hideLoading();
-
-      db.collection('publish-list').add({
-          data: {
-            content: e.detail.value,
-            // 把云存储里面图片的地址存到数据库中
-            imgs: res,
-            time: new Date().getTime(),
-            goodCount: 0,
-            commentCount: 0,
-            shareCount: 0,
-            position: this.data.city+"  "+this.data.district,
-            author: this.data.nickName,
-            authorImg: this.data.avatarUrl
-          }
-        })
-        .then(res => {
-          console.log(res)
-          wx.showToast({
-            title: '发表成功'
+        db.collection('publish-list').add({
+            data: {
+              content: e.detail.value,
+              // 把云存储里面图片的地址存到数据库中
+              imgs: res,
+              time: new Date().getTime(),
+              goodCount: 0,
+              commentCount: 0,
+              shareCount: 0,
+              position: this.data.city + "  " + this.data.district,
+              author: this.data.nickName,
+              authorImg: this.data.avatarUrl
+            }
           })
-          
-          // 设置300毫秒以后跳转页面，并且清空页面内容
-          setTimeout(()=>{
-            wx.switchTab({
-              url: '../show/show',
+          .then(res => {
+            // console.log(res)
+            wx.showToast({
+              title: '发表成功'
             })
-            this.setData({
-              imgs: [],
-              content: ""
-            });
-          },300);
-        })
-        .catch(console.error)
-    });
+
+            // 设置300毫秒以后跳转页面，并且清空页面内容
+            setTimeout(() => {
+              wx.switchTab({
+                url: '../show/show',
+              })
+              this.setData({
+                imgs: [],
+                content: ""
+              });
+            }, 300);
+          })
+          .catch((res)=>{
+            console.log(res);
+          })
+      });
+    } else {
+      wx.showToast({
+        title: '亲，写点什么吧'
+      })
+    }
 
   },
 
@@ -97,7 +103,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that=this;
+    let that = this;
     // 查看是否授权
     wx.getSetting({
       success(res) {
@@ -124,7 +130,7 @@ Page({
 
     //小程序api获取当前坐标
     wx.getLocation({
-      success: function (res) {
+      success: function(res) {
 
         // 调用sdk接口
         qqmapsdk.reverseGeocoder({
@@ -132,7 +138,7 @@ Page({
             latitude: res.latitude,
             longitude: res.longitude
           },
-          success: function (res) {
+          success: function(res) {
             //获取当前地址成功
             let result = res.result.address_component;
             that.setData({
@@ -140,7 +146,7 @@ Page({
               district: result.district
             });
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res);
             console.log('获取当前地址失败');
           }

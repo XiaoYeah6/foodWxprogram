@@ -198,7 +198,7 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success(res) {
-        if (res.authSetting['scope.userInfo']) {
+        if (!res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success(res) {
@@ -207,7 +207,7 @@ Page({
                 author: res.userInfo.nickName
               });
             }
-          })
+         })
         }
       }
     })
@@ -224,7 +224,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.onLoad();
+    let that = this;
+    // 获取用户的openID
+    utils.default.getOpenId().then((res) => {
+      that.setData({
+        openId: res.result.OPENID
+      });
+    });
+
+    // 加载showlist页面信息
+    db.collection('publish-list').where({}).orderBy('time', 'desc').limit(20).get().then(res => {
+      that.setData({
+        showInfors: res.data
+      });
+    })
+
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              that.setData({
+                img: res.userInfo.avatarUrl,
+                author: res.userInfo.nickName
+              });
+            }
+         })
+        }
+      }
+    })
   },
 
   /**

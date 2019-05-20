@@ -30,28 +30,23 @@ Page({
         if (!res.authSetting['scope.userLocation']) {
           wx.authorize({
             scope: 'scope.userLocation',
-            success() {
-            }
+            success() { }
           })
         }
         if (!res.authSetting['scope.writePhotosAlbum']) {
           wx.authorize({
             scope: 'scope.writePhotosAlbum',
-            success() {
-            }
+            success() { }
           })
         }
 
       }
     })
-
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
   },
 
   /**

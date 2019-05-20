@@ -12,8 +12,8 @@
     </view>
 
     <swiper class='swiper' indicator-dots="true" autoplay="true" interval="1000" duration="500" circular="true">
-      <swiper-item wx:for="{{swipeInfors}}" bindtap="goDetail" data-id="{{item._id}}">
-        <image src="{{item.pic}}" class="slide-image"/>
+      <swiper-item wx:for="{{swipeInfors}}" data-id="{{item._id}}">
+        <image src="{{item.pic}}"  bindtap="goDetail" class="slide-image"/>
       </swiper-item>
     </swiper>
   </view>

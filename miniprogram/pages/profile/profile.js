@@ -12,6 +12,12 @@ Page({
     userImg: ""
   },
 
+  feedback(){
+    wx.navigateTo({
+      url: '../feedback/index',
+    })
+  },
+
   share(){
     wx.showShareMenu({
       withShareTicket: true 
