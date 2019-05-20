@@ -1,5 +1,4 @@
 /* pages/profile/collection/collection.wxss */
-/* @import '../../../template/home-detail-tem.wxss'; */
 #container{
   background: #fff;
 }
@@ -7,7 +6,7 @@
   display: flex;
 }
 .classify button{
-  background: #f0f3fa;
+  background: #06c1ae;
   padding: 0px;
   margin: 0px;
   width: 49%;

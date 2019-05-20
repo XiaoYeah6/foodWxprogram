@@ -44,20 +44,18 @@
 
       <view class='show-foot'>
         <view class='good common'>
-          <!-- <image mode='widthFix' src='../../../images/good.png'></image>
-          <text>{{item.goodCount}}</text> -->
-          <image wx:if="{{item.isGood}}" mode='widthFix' src='../../../images/good-s.png'></image>
-          <image wx:else mode='widthFix' src='../../../images/good.png'></image>
+          <image mode='widthFix' src='../../../images/good-s.png'></image>
+          <!-- <image wx:else mode='widthFix' src='../../../images/good.png'></image> -->
           <text>{{item.goodCount}}</text>
         </view>
         <view class='share common'>
-          <image wx:if="{{item.isShare}}" mode='widthFix' src='../../../images/share-s.png'></image>
-          <image wx:else mode='widthFix' src='../../../images/share.png'></image>
+          <image mode='widthFix' src='../../../images/share-s.png'></image>
+          <!-- <image wx:else mode='widthFix' src='../../../images/share.png'></image> -->
           <text>{{item.shareCount}}</text>
         </view>
         <view class='remark common'>
-          <image wx:if="{{item.isComment}}" mode='widthFix' src='../../../images/comment-s.png'></image>
-          <image wx:else mode='widthFix' src='../../../images/remark.png'></image>
+          <image mode='widthFix' src='../../../images/comment-s.png'></image>
+          <!-- <image wx:else mode='widthFix' src='../../../images/remark.png'></image> -->
           <text>{{item.commentCount}}</text>
         </view>
       </view>

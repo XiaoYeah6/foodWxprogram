@@ -24,6 +24,7 @@
 }
 .user-infor .author{
   font-size: 14px;
+  color: #333;
 }
 .user-infor .show-infor{
   display: flex;
@@ -59,6 +60,9 @@
   color: #333;
   background: #fff;
 }
+.content-container .content{
+  color: #333;
+}
 .show-foot{
   display: flex;
   padding-bottom: 8px;
@@ -75,6 +79,7 @@
   position: relative;
   top: 3px;
   left: -2px;
+  opacity: .4;
 }
 .show-foot .common text{
   font-size: 12px;
