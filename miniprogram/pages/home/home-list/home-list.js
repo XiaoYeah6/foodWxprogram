@@ -28,7 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options);
+    // console.log(options);
     // 处理一下请求数据的接口
     Object.assign(this.data.homeListInfor, {
       classid: options.classid
@@ -41,7 +41,9 @@ Page({
 
     const db = wx.cloud.database();
     const foodList = db.collection('food-list');
-
+    wx.showLoading({
+      title: '加载中',
+    })
     if ((!options.classid) || options.keyword) {
       console.log("关键字请求数据");
 
@@ -103,6 +105,7 @@ Page({
             that.setData({
               menuHomeList
             });
+            wx.hideLoading();
           });
 
         } else {
@@ -111,6 +114,7 @@ Page({
           that.setData({
             menuHomeList: res.data
           });
+          wx.hideLoading();
         }
       });
     } else {

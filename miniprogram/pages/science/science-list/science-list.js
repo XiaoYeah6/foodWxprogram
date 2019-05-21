@@ -22,7 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    wx.showLoading({
+      title: '加载中',
+    })
     let that=this;
     let id=options.id;
     this.setData({
@@ -37,6 +39,7 @@ Page({
           scienceList: res.data
         })
         // console.log(res.data);
+        wx.hideLoading();
       },
       fail() {
         // 科普分类的url
@@ -67,6 +70,7 @@ Page({
             that.setData({
               scienceList: arr
             });
+            wx.hideLoading();
           }
         })
       }

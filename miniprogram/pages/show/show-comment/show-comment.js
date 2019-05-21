@@ -64,6 +64,9 @@ Page({
    */
   onLoad: function(options) {
     // console.log(options);
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this;
     // 查看是否授权
     wx.getSetting({
@@ -93,6 +96,7 @@ Page({
       that.setData({
         commentLists: res.data
       });
+      wx.hideLoading();
     });
   },
 

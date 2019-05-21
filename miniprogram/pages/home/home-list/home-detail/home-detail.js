@@ -177,7 +177,9 @@ Page({
       })
 
 
-
+    wx.showLoading({
+      title: '加载中',
+    })
     // 请求详情列表数据
     wx.getStorage({
       key: "detailInfor" + options.classid,
@@ -196,6 +198,7 @@ Page({
         that.setData({
           imgs: arr
         });
+        wx.hideLoading();
       },
       fail() {
         let menuDetailUrl = constUrl.default.menuDetailUrl + utils.default.dealQuery(Object.assign({
@@ -225,6 +228,7 @@ Page({
           that.setData({
             imgs: arr
           });
+          wx.hideLoading();
         });
 
       }

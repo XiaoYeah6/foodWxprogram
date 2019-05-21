@@ -131,6 +131,10 @@ Page({
     // 如果没有首先从接口中去请求数据
     // 然后把数据显示到页面的同时，也存入数据库中
 
+    wx.showLoading({
+      title: '加载中',
+    })
+
     db.collection('food-list').where({
       classid: that.data.recommendListInfor.classid //当前每日推荐的classid
     }).limit(10).get().then((res) => {
@@ -145,6 +149,7 @@ Page({
             num: 10
           }
         });
+        wx.hideLoading()
         console.log("数据库拿来的数据");
 
       } else {
@@ -154,7 +159,7 @@ Page({
           appkey: constUrl.default.menuAppkey
         }));
 
-        console.log("初始" + recommendListUrl);
+        // console.log("初始" + recommendListUrl);
         // 请求数据
         let recommendList = [];
         utils.default.requestData(recommendListUrl).then((res) => {
@@ -193,7 +198,7 @@ Page({
                 num: 10
               }
             });
-
+            wx.hideLoading();
           });
 
         });

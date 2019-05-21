@@ -52,6 +52,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let id = options.id;
     // console.log(id);
     this.setData({
@@ -85,6 +88,7 @@ Page({
             that.setData({
               scienceDetail: data
             });
+            wx.hideLoading();
           }
         })
       }

@@ -181,6 +181,9 @@ Page({
   onLoad: function(options) {
     let that = this;
 
+    wx.showLoading({
+      title: '加载中',
+    })
     // 获取用户的openID
     utils.default.getOpenId().then((res) => {
       that.setData({
@@ -193,6 +196,7 @@ Page({
       that.setData({
         showInfors: res.data
       });
+      wx.hideLoading();
     })
 
     // 查看是否授权
