@@ -30,6 +30,9 @@ Page({
     this.setData({
       openId: options.openId
     });
+    wx.showLoading({
+      title: '加载中',
+    })
     const db=wx.cloud.database();
     db.collection("collection_food").where({
       _openid: options.openId // 填入当前用户 openid
@@ -38,6 +41,7 @@ Page({
       this.setData({
         collectionFoods: res.data
       });
+      wx.hideLoading();
     });
   },
 

@@ -30,7 +30,7 @@
       </view>
     </view>
     <view class='description'>
-      {{deleteWrap.deleWrap(detailInfor.content)}}
+        {{content}}
     </view>
 
     <view class='material'>

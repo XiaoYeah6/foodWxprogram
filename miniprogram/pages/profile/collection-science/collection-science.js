@@ -21,6 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     const db = wx.cloud.database();
     db.collection("collection_science").where({
       _openid: options.openId // 填入当前用户 openid
@@ -28,6 +31,7 @@ Page({
       this.setData({
         scienceColletions: res.data
       });
+      wx.hideLoading();
     });
     
   },

@@ -12,13 +12,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // console.log(options);
+    wx.showLoading({
+      title: '加载中',
+    })
     const db = wx.cloud.database()
     db.collection('publish-list').where({
-      _openid: "oNy4J44M2VZ7KS-gMJOW7VDt3L6k"  // 填入当前用户 openid
+      _openid: options.openId  // 填入当前用户 openid
     }).orderBy('time', 'desc').limit(10).get().then(res => {
       this.setData({
         myShowInfors: res.data
       });
+      wx.hideLoading();
     })
   },
 
