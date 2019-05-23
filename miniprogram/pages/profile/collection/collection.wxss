@@ -1,4 +1,7 @@
 /* pages/profile/collection/collection.wxss */
+page{
+  min-height:100%;
+}
 #container{
   background: #fff;
 }

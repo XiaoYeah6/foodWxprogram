@@ -1,4 +1,7 @@
 /* pages/profile/collection-science/collection-science.wxss */
+page{
+  height: 100vh;
+}
 #container{
   width: 100vw;
   /* height: 100vh; */

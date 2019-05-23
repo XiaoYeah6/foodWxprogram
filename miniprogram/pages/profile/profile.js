@@ -31,10 +31,10 @@ Page({
       confirmText: "确认",
       success(res){
         if(res.confirm){
-          wx.clearStorage();
           wx.showToast({
-            title: '',
+            title: '清除成功',
           })
+          wx.clearStorage();
         }
       }
     })
