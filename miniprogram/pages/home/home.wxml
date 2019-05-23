@@ -19,7 +19,7 @@
   </view>
 
   <view class='hot-search-list'>
-    <view class='hot-title'>热门分类</view>
+    <view class='hot-title'>地方菜系</view>
     <view class='list'>
       <navigator class='item' wx:for="{{menuList}}" url="./home-list/home-list?classid={{item.classid}}">{{item.name}}</navigator>
     </view>
