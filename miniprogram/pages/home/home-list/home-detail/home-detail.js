@@ -191,7 +191,10 @@ Page({
           title: res.data.name,
           content: utils.default.deleWrap1(res.data.content)
         });
-        console.log(that.data.content);
+        wx.setNavigationBarTitle({
+          title: res.data.name
+        })
+        // console.log(that.data.content);
         // 详情图片预览
         let arr = res.data.process.map((item, index) => {
           return item.pic;
