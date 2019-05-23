@@ -143,6 +143,9 @@ Page({
       viewCount: options.viewcount,
       starCount: options.starcount
     });
+    wx.setNavigationBarTitle({
+      title: options.name
+    })
 
     // 获取当前数据的唯一标识 (并且在其成功的回调函数后加上更新浏览状态)
     db.collection('food-list')
@@ -191,9 +194,7 @@ Page({
           title: res.data.name,
           content: utils.default.deleWrap1(res.data.content)
         });
-        wx.setNavigationBarTitle({
-          title: res.data.name
-        })
+
         // console.log(that.data.content);
         // 详情图片预览
         let arr = res.data.process.map((item, index) => {

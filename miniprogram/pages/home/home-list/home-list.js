@@ -18,6 +18,7 @@ Page({
 
   // 点击每日推荐显示详情页面
   showDetail(e) {
+    // console.log(e.currentTarget);
     wx.navigateTo({
       url: './home-detail/home-detail?' + utils.default.dealQuery(e.currentTarget.dataset),
     })
@@ -28,7 +29,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     // console.log(options);
+    wx.setNavigationBarTitle({
+      title: options.name,
+    })
     // 处理一下请求数据的接口
     Object.assign(this.data.homeListInfor, {
       classid: options.classid
@@ -41,9 +48,7 @@ Page({
 
     const db = wx.cloud.database();
     const foodList = db.collection('food-list');
-    wx.showLoading({
-      title: '加载中',
-    })
+
     if ((!options.classid) || options.keyword) {
       console.log("关键字请求数据");
 
@@ -58,7 +63,6 @@ Page({
           options: 'i'
         })
       }).limit(12).get().then((res) => {
-
         // 从接口请求数据，并添加到数据库
         if (!res.data.length) {
           let homeListUrl = constUrl.default.searchUrl + utils.default.dealQuery(Object.assign({
@@ -70,7 +74,6 @@ Page({
           }));
           // 请求数据
           utils.default.requestData(homeListUrl).then((res) => {
-
             console.log("接口请求的数据");
             console.log(res.data.result.result.list);
 
@@ -128,6 +131,7 @@ Page({
           that.setData({
             menuHomeList: res.data
           });
+          wx.hideLoading();
         } else {
           // 请求的url接口
           let homeListUrl = constUrl.default.recommendListUrl + utils.default.dealQuery(Object.assign(that.data.homeListInfor, {
@@ -170,6 +174,7 @@ Page({
               that.setData({
                 menuHomeList
               });
+              wx.hideLoading();
               console.log(menuHomeList);
             });
           });

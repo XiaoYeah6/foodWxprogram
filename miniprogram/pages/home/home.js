@@ -31,28 +31,29 @@ Page({
     swipeInfors: [{
         name: "安徽牛肉板面",
         pic: "../../images/food1.jpg",
-        _id: "988c1b1b5cdd3ce31318cbe766fae5b6"
+      _id: "c0a3987b5ce6074f03c412a212a6eb8d"
       },
       {
         name: "鲍汁过桥排骨",
         pic: "../../images/food3.jpg",
-        _id: "96c1cbbe5cdd3ce41317706426e66943"
+        _id: "6cd397ca5ce605ba03c4f0d362c56a44"
       },
       {
         name: "藕圆子",
         pic: "../../images/food2.jpg",
-        _id: "988c1b1b5cdd3ce41318cbed1a67266b"
+        _id: "f4b905395ce606d603c6c11337ca3779"
       },
       {
         name: "青椒香干炒拉皮",
         pic: "../../images/food4.jpg",
-        _id: "96c1cbbe5cdd3ce3131770621aff9e18"
+        _id: "f4b905395ce6072703c6e63e56c00493"
       }
     ]
 
   },
 
   goDetail(e) {
+    console.log(e);
     db.collection("food-list").where({
       _id: e.currentTarget.dataset.id
     }).get().then((res) => {
@@ -60,7 +61,8 @@ Page({
         sharecount: res.data[0].shareCount,
         starcount: res.data[0].starCount,
         viewcount: res.data[0].viewCount,
-        classid: res.data[0].id
+        classid: res.data[0].id,
+        name: e.currentTarget.dataset.name
       }
       wx.navigateTo({
         url: './home-list/home-detail/home-detail?' + utils.default.dealQuery(obj),

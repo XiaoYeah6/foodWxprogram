@@ -12,8 +12,8 @@
     </view>
 
     <swiper class='swiper' indicator-dots="true" autoplay="true" interval="1000" duration="500" circular="true">
-      <swiper-item wx:for="{{swipeInfors}}" data-id="{{item._id}}">
-        <image src="{{item.pic}}"  bindtap="goDetail" class="slide-image"/>
+      <swiper-item wx:for="{{swipeInfors}}"  bindtap="goDetail"  data-id="{{item._id}}" data-name="{{item.name}}">
+        <image src="{{item.pic}}" class="slide-image"/>
       </swiper-item>
     </swiper>
   </view>
@@ -21,7 +21,7 @@
   <view class='hot-search-list'>
     <view class='hot-title'>地方菜系</view>
     <view class='list'>
-      <navigator class='item' wx:for="{{menuList}}" url="./home-list/home-list?classid={{item.classid}}">{{item.name}}</navigator>
+      <navigator class='item' wx:for="{{menuList}}" url="./home-list/home-list?classid={{item.classid}}&name={{item.name}}">{{item.name}}</navigator>
     </view>
   </view>
 
@@ -29,7 +29,7 @@
     <view class='recommend-title'>每日推荐</view>
     <view>
       <view class='recommend-list'>
-        <view wx:for="{{recommendList}}" bindtap="showDetail" data-sharecount='{{item.shareCount}}' data-starcount='{{item.starCount}}' data-viewcount="{{item.viewCount}}" data-classid="{{item.id}}" class='recommend-item'>
+        <view wx:for="{{recommendList}}" bindtap="showDetail" data-sharecount='{{item.shareCount}}' data-starcount='{{item.starCount}}' data-viewcount="{{item.viewCount}}" data-classid="{{item.id}}" data-name="{{item.name}}" class='recommend-item'>
           <template is="home-detail" data="{{...item}}" />
         </view>
       </view>
