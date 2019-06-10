@@ -20,8 +20,10 @@ Page({
           success: res => { //成功的回调
 
             // 测试传图识别菜品的接口
+            // 6.10
+            // 24.2bb1e3f841e17fe5a43aa54ddacc3f58.2592000.1562743815.282335-16271897
             wx.request({
-              url: 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=24.e8b34212fd874f4e1f52e6a962998b06.2592000.1560647934.282335-16271897',
+              url: 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=24.2bb1e3f841e17fe5a43aa54ddacc3f58.2592000.1562743815.282335-16271897',
               method: "POST",
               data: {
                 image: res.data,
