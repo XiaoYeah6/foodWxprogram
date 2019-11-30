@@ -44,7 +44,7 @@ Page({
     // 页面显示
     //将全局的方法赋值
     var that = this;
-    var hotapp = app.globalData.hotapp;
+    // var hotapp = app.globalData.hotapp;
     //调用登录接口
     wx.login({
       success: function(res) {
@@ -135,14 +135,13 @@ Page({
       //上传文字到服务器
       console.log(app.globalData.hotapp);
 
-      app.globalData.hotapp.feedback(e.detail.value, 0, that.data.contract_info, function(res) {
-
-        wx.showToast({
-          title: '已成功反馈',
-          icon: 'success',
-          duration: 1000
-        })
-      })
+      // app.globalData.hotapp.feedback(e.detail.value, 0, that.data.contract_info, function(res) {
+      //   wx.showToast({
+      //     title: '已成功反馈',
+      //     icon: 'success',
+      //     duration: 1000
+      //   })
+      // })
     }
 
 
@@ -162,33 +161,33 @@ Page({
   footaddimg: function() {
     var that = this;
     //使用hotapp接口获取图片路径
-    app.globalData.hotapp.uploadFeedbackImage(res => {
-      //添加到反馈数组
-      var newfeedback = that.data.feedback;
-      newfeedback.push({
-        content: res,
-        content_type: 1,
-        contract_info: '',
-        role: false,
-        img: that.data.userInfo.avatarUrl,
-      }, {
-        content: '【系统消息】：您的反馈已收到！',
-        content_type: 0,
-        contract_info: that.data.contract_info,
-        role: true,
-        img: "../../images/hotapp_01_07.png"
-      })
-      //修改feedback
-      that.setData({
-        flag: true,
-        feedback: newfeedback
-      })
-      //添加图片到服务器
+    // app.globalData.hotapp.uploadFeedbackImage(res => {
+    //   //添加到反馈数组
+    //   var newfeedback = that.data.feedback;
+    //   newfeedback.push({
+    //     content: res,
+    //     content_type: 1,
+    //     contract_info: '',
+    //     role: false,
+    //     img: that.data.userInfo.avatarUrl,
+    //   }, {
+    //     content: '【系统消息】：您的反馈已收到！',
+    //     content_type: 0,
+    //     contract_info: that.data.contract_info,
+    //     role: true,
+    //     img: "../../images/hotapp_01_07.png"
+    //   })
+    //   //修改feedback
+    //   that.setData({
+    //     flag: true,
+    //     feedback: newfeedback
+    //   })
+    //   //添加图片到服务器
 
-      app.globalData.hotapp.feedback(res, 1, that.data.contract_info, function(res) {
-        console.log(res)
-      })
-    })
+    //   app.globalData.hotapp.feedback(res, 1, that.data.contract_info, function(res) {
+    //     console.log(res)
+    //   })
+    // })
   },
   footaddtell: function() {
     //打开弹出框

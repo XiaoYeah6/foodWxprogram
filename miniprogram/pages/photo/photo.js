@@ -35,7 +35,9 @@ Page({
               success(res) {
                 if (res.data.length != 0) {
                   wx.navigateTo({
-                    url: '../home/home-list/home-list?' + utils.default.dealQuery(Object.assign({num: 10}, {
+                    url: '../home/home-list/home-list?' + utils.default.dealQuery(Object.assign({
+                      num: 10
+                    }, {
                       keyword: res.data.result[0].name
                     }))
                   })
