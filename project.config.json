@@ -17,8 +17,8 @@
 			"outputPath": ""
 		}
 	},
-	"appid": "wx359b3aba3cb0a43b",
-	"projectname": "%E7%BE%8E%E9%A3%9F%E5%B0%8F%E8%9C%97",
+	"appid": "wx9e71b4feed6591e4",
+	"projectname": "weichat-app",
 	"libVersion": "2.7.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
